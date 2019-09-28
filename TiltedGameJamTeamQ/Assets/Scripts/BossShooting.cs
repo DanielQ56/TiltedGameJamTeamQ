@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class BossShooting : MonoBehaviour
 {
-    [SerializeField] GameObject bullet;
-    [SerializeField] float angleInBetween;
-    [SerializeField] float radius;
-    [SerializeField] float spawnLag;
+    [SerializeField] List<ScriptableBullet> bulletTypes;
     [SerializeField] float minWaitTime;
     [SerializeField] float maxWaitTime;
     [SerializeField] ObjectPool pool;
@@ -53,6 +50,9 @@ public class BossShooting : MonoBehaviour
         angle = 0f;
         List<BulletMovement> movement = new List<BulletMovement>();
         isShooting = true;
+        float radius = pool.GetRadius();
+        float angleInBetween = pool.getAngleInBetween();
+        float spawnLag = pool.getSpawnLag();
         while(angle < 360f)
         {
             float rad = Mathf.Deg2Rad * angle;
@@ -65,7 +65,7 @@ public class BossShooting : MonoBehaviour
         }
         foreach(BulletMovement b in movement)
         {
-            b.FireOff(pool.transform.localPosition);
+            b.FireOff(pool.transform.localPosition, pool.GetBulletSpeed());
         }
         isShooting = false;
         waitingToShoot = false;

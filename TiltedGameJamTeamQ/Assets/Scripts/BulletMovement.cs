@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    [SerializeField] float speed;
 
     Rigidbody2D rb;
 
@@ -15,7 +14,7 @@ public class BulletMovement : MonoBehaviour
         this.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
-    public void FireOff(Vector3 pos)
+    public void FireOff(Vector3 pos, float speed)
     {
         rb.velocity = Vector3.Normalize(this.transform.localPosition - pos) * speed;
         this.transform.parent = null;

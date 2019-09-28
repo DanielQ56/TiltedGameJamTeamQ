@@ -116,7 +116,7 @@ public class Player : MonoBehaviour
             GameObject b = p.GetUnusedObject();
             b.SetActive(true);
             b.transform.localPosition = p.gameObject.transform.localPosition + (p.gameObject.transform.up * 0.01f);
-            b.GetComponent<BulletMovement>().FireOff(p.transform.localPosition);
+            b.GetComponent<BulletMovement>().FireOff(p.transform.localPosition, p.GetBulletSpeed());
         }
         yield return new WaitForSeconds(0.05f);
         isShooting = false;
