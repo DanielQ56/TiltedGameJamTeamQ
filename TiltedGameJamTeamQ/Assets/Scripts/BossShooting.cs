@@ -10,6 +10,7 @@ public class BossShooting : MonoBehaviour
     [SerializeField] float spawnLag;
     [SerializeField] float minWaitTime;
     [SerializeField] float maxWaitTime;
+    [SerializeField] ObjectPool pool;
 
 
     bool waitingToShoot = false;
@@ -34,7 +35,6 @@ public class BossShooting : MonoBehaviour
         {
             timer = Random.Range(minWaitTime, maxWaitTime);
             waitingToShoot = true;
-            Debug.Log(timer);
         }
         if(timer <= 0)
         {
@@ -51,13 +51,13 @@ public class BossShooting : MonoBehaviour
     IEnumerator SpawnBullets()
     {
         angle = 0f;
-        Debug.Log("Shooting");
         List<BulletMovement> movement = new List<BulletMovement>();
         isShooting = true;
         while(angle < 360f)
         {
             float rad = Mathf.Deg2Rad * angle;
-            GameObject b = Instantiate(bullet, transform);
+            GameObject b = pool.GetUnusedObject();
+            b.SetActive(true);
             b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * radius;
             movement.Add(b.GetComponent<BulletMovement>());
             yield return new WaitForSeconds(spawnLag);
@@ -65,7 +65,7 @@ public class BossShooting : MonoBehaviour
         }
         foreach(BulletMovement b in movement)
         {
-            b.FireOff();
+            b.FireOff(this.transform.position);
         }
         isShooting = false;
         waitingToShoot = false;

@@ -15,13 +15,15 @@ public class BulletMovement : MonoBehaviour
         this.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
-    public void FireOff()
+    public void FireOff(Vector3 bossPos)
     {
-        rb.velocity = Vector3.Normalize(this.transform.localPosition) * speed;
+        this.transform.parent = null;
+        rb.velocity = Vector3.Normalize(this.transform.position - bossPos) * speed;
     }
 
     private void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
+
     }
 }
