@@ -452,10 +452,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c76c7501d8b824195eefdae757a624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 8018893471223492922, guid: 7ff1faac2e44756468ad87bc663f4a6b,
+  objectToPool: {fileID: 7813825744754125306, guid: f8613f46d187d1345ba455f2aa4c4832,
     type: 3}
   poolMax: 40
-  shouldExpand: 0
+  shouldExpand: 1
 --- !u!1 &1900780182
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,10 +517,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9e109829ddb494b9d1495f755c082b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8018893471223492922, guid: 7ff1faac2e44756468ad87bc663f4a6b, type: 3}
-  angleInBetween: 10
+  bullet: {fileID: 7813825744754125306, guid: f8613f46d187d1345ba455f2aa4c4832, type: 3}
+  angleInBetween: 20
   radius: 0.2
-  spawnLag: 0.0001
+  spawnLag: 0.02
   minWaitTime: 1
   maxWaitTime: 3
   pool: {fileID: 1653719631}
