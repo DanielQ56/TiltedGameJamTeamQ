@@ -59,6 +59,11 @@ public class ObjectPool : MonoBehaviour
         return objectToPool.angleInBetween;
     }
 
+    public float GetBulletSpeed()
+    {
+        return objectToPool.bulletSpeed;
+    }
+
     public void Straighten()
     {
         this.transform.eulerAngles = Vector3.zero;

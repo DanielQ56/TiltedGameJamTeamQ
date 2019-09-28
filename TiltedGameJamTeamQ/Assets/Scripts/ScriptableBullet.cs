@@ -9,4 +9,5 @@ public class ScriptableBullet : ScriptableObject
     public float angleInBetween;
     public float radius;
     public float spawnLag;
+    public float bulletSpeed;
 }
