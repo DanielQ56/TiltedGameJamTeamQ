@@ -45,7 +45,7 @@ public class BossShooting : MonoBehaviour
        
     }
 
-    IEnumerator SpawnBullets()
+    IEnumerator PhaseOne()
     {
         angle = 0f;
         List<BulletMovement> movement = new List<BulletMovement>();
@@ -67,6 +67,37 @@ public class BossShooting : MonoBehaviour
         {
             b.FireOff(pool.transform.localPosition, pool.GetBulletSpeed());
         }
+        isShooting = false;
+        waitingToShoot = false;
+    }
+
+    IEnumerator PhaseTwo()
+    {
+        float revs = 0f;
+        angle = 0f;
+        isShooting = true;
+
+        while (angle < 360f && revs != 3f)
+        {
+            float rad = Mathf.Deg2Rad * angle;
+            GameObject b = pool.GetUnusedObject(); //pool
+            b.SetActive(true); //pool
+            BulletMovement b2 = b.GetComponent<BulletMovement>();
+
+            b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * radius;
+            b2.FireOff(this.transform.position, pool.GetBulletSpeed());
+
+            yield return new WaitForSeconds(spawnLag);
+            angle += angleInBetween;
+
+            if (angle >= 360)
+            {
+                angle = 0f + (revs * 30);
+                revs++;
+            }
+
+        }
+
         isShooting = false;
         waitingToShoot = false;
     }
