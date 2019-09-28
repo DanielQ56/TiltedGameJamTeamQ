@@ -224,8 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c76c7501d8b824195eefdae757a624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 4326157092962914952, guid: 63863836ffa4b374fb1ce41d27f2446d,
-    type: 3}
+  objectToPool: {fileID: 0}
   poolMax: 20
   shouldExpand: 1
 --- !u!212 &426696404
@@ -574,8 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c76c7501d8b824195eefdae757a624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 8018893471223492922, guid: 7ff1faac2e44756468ad87bc663f4a6b,
-    type: 3}
+  objectToPool: {fileID: 11400000, guid: f4928d418ceb8544f9c0b1c4dcf2d9b5, type: 2}
   poolMax: 40
   shouldExpand: 1
 --- !u!1 &1031202638
@@ -622,8 +620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c76c7501d8b824195eefdae757a624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 4326157092962914952, guid: 63863836ffa4b374fb1ce41d27f2446d,
-    type: 3}
+  objectToPool: {fileID: 0}
   poolMax: 20
   shouldExpand: 1
 --- !u!212 &1031202641
@@ -749,8 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c76c7501d8b824195eefdae757a624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 4326157092962914952, guid: 63863836ffa4b374fb1ce41d27f2446d,
-    type: 3}
+  objectToPool: {fileID: 0}
   poolMax: 20
   shouldExpand: 1
 --- !u!212 &2049339287
@@ -834,10 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e58fed9d45628498370b885eeb1287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8018893471223492922, guid: 7ff1faac2e44756468ad87bc663f4a6b, type: 3}
-  angleInBetween: 10
-  radius: 0.5
-  spawnLag: 0.02
+  bulletTypes: []
   minWaitTime: 1
   maxWaitTime: 3
   pool: {fileID: 931903804}

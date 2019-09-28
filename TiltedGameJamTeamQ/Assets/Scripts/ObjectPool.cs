@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    [SerializeField] GameObject objectToPool;
+    [SerializeField] ScriptableBullet objectToPool;
     [SerializeField] int poolMax;
     [SerializeField] bool shouldExpand = false;
 
@@ -17,7 +17,7 @@ public class ObjectPool : MonoBehaviour
         objects = new List<GameObject>();
         for(int i = 0; i < poolMax; ++i)
         {
-            GameObject g = Instantiate(objectToPool, this.transform);
+            GameObject g = Instantiate(objectToPool.bulletPrefab, this.transform);
             g.SetActive(false);
             objects.Add(g);
         }
@@ -35,13 +35,28 @@ public class ObjectPool : MonoBehaviour
         }
         if(shouldExpand)
         {
-            GameObject obj = Instantiate(objectToPool, this.transform);
+            GameObject obj = Instantiate(objectToPool.bulletPrefab, this.transform);
             return obj;
         }
         else
         {
             return null;
         }
+    }
+
+    public float GetRadius()
+    {
+        return objectToPool.radius;
+    }
+
+    public float getSpawnLag()
+    {
+        return objectToPool.spawnLag;
+    }
+
+    public float getAngleInBetween()
+    {
+        return objectToPool.angleInBetween;
     }
 
     public void Straighten()
