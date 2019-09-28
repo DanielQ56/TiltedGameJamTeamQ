@@ -17,7 +17,6 @@ public class BulletMovement : MonoBehaviour
 
     public void FireOff()
     {
-        Debug.Log(Vector3.Normalize(this.transform.localPosition));
         rb.velocity = Vector3.Normalize(this.transform.localPosition) * speed;
     }
 

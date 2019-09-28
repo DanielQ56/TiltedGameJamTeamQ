@@ -8,11 +8,16 @@ public class BossShooting : MonoBehaviour
     [SerializeField] float angleInBetween;
     [SerializeField] float radius;
     [SerializeField] float spawnLag;
+    [SerializeField] float minWaitTime;
+    [SerializeField] float maxWaitTime;
 
 
+    bool waitingToShoot = false;
     bool isShooting = false;
 
     float angle = 0f;
+
+    float timer = 0;
 
 
 
@@ -25,14 +30,28 @@ public class BossShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isShooting)
+        if(!waitingToShoot)
         {
-            StartCoroutine(SpawnBullets());
+            timer = Random.Range(minWaitTime, maxWaitTime);
+            waitingToShoot = true;
+            Debug.Log(timer);
         }
+        if(timer <= 0)
+        {
+            if(!isShooting)
+                StartCoroutine(SpawnBullets());
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+        }
+       
     }
 
     IEnumerator SpawnBullets()
     {
+        angle = 0f;
+        Debug.Log("Shooting");
         List<BulletMovement> movement = new List<BulletMovement>();
         isShooting = true;
         while(angle < 360f)
@@ -49,6 +68,7 @@ public class BossShooting : MonoBehaviour
             b.FireOff();
         }
         isShooting = false;
+        waitingToShoot = false;
     }
 
 
