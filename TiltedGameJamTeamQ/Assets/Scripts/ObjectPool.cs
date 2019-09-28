@@ -8,9 +8,12 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] int poolMax;
     [SerializeField] bool shouldExpand = false;
 
+    Vector3 originalRotation;
+
     List<GameObject> objects;
     void Start()
     {
+        originalRotation = this.transform.eulerAngles;
         objects = new List<GameObject>();
         for(int i = 0; i < poolMax; ++i)
         {
@@ -39,5 +42,15 @@ public class ObjectPool : MonoBehaviour
         {
             return null;
         }
+    }
+
+    public void Straighten()
+    {
+        this.transform.eulerAngles = Vector3.zero;
+    }
+
+    public void Revert()
+    {
+        this.transform.eulerAngles = originalRotation;
     }
 }

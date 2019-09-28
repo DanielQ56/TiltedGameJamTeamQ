@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     public double InvurTime = 0.5;
     public bool Invurnable = false;
     public Vector2 direction;
+    [SerializeField] List<ObjectPool> pools;
+
+    bool isShooting = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,10 @@ public class Player : MonoBehaviour
     public void Focus()
     {
         speed = 3;
+        foreach(ObjectPool p in pools)
+        {
+            p.Straighten();
+        }
     }
 
     // Gets player input.
@@ -49,14 +56,17 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 10;
+            foreach(ObjectPool p in pools)
+            {
+                p.Revert();
+            }
         }
-        /* Instantiate bullets
-        if ( Input.GetKey( KeyCode.Z ) )
+        if( Input.GetKey( KeyCode.Z ) )
         {
 
-            GetPlayerDirection();
+            if (!isShooting) StartCoroutine(Shoot());
         }
-        */
+        
         GetPlayerDirection();
 
     }
@@ -97,6 +107,22 @@ public class Player : MonoBehaviour
             Invurnable = false;
         }
     }
+
+    IEnumerator Shoot()
+    {
+        isShooting = true;
+        foreach(ObjectPool p in pools)
+        {
+            GameObject b = p.GetUnusedObject();
+            b.SetActive(true);
+            b.transform.localPosition = p.gameObject.transform.localPosition + (p.gameObject.transform.up * 0.01f);
+            b.GetComponent<BulletMovement>().FireOff(p.transform.localPosition);
+        }
+        yield return new WaitForSeconds(0.05f);
+        isShooting = false;
+    }
+
+    
 
     /*Detects if the player collides with a bullet and loses a heart if hit.\
      */

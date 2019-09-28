@@ -65,7 +65,7 @@ public class BossShooting : MonoBehaviour
         }
         foreach(BulletMovement b in movement)
         {
-            b.FireOff(this.transform.position);
+            b.FireOff(pool.transform.localPosition);
         }
         isShooting = false;
         waitingToShoot = false;
