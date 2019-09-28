@@ -54,7 +54,7 @@ public class TestBossShoot : MonoBehaviour
             BulletMovement b2 = b.GetComponent<BulletMovement>();
             
             b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * radius;
-            b2.FireOff(this.transform.position);
+            b2.FireOff(this.transform.position, pool.GetBulletSpeed());
 
             yield return new WaitForSeconds(spawnLag);
             angle += angleInBetween;

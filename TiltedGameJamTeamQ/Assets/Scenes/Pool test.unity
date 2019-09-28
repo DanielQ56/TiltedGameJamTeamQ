@@ -452,8 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c76c7501d8b824195eefdae757a624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 7813825744754125306, guid: f8613f46d187d1345ba455f2aa4c4832,
-    type: 3}
+  objectToPool: {fileID: 11400000, guid: 9526e7e906c5cbd43820d612efa6913e, type: 2}
   poolMax: 40
   shouldExpand: 1
 --- !u!1 &1900780182
@@ -517,7 +516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d9e109829ddb494b9d1495f755c082b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7813825744754125306, guid: f8613f46d187d1345ba455f2aa4c4832, type: 3}
+  bullet: {fileID: 8018893471223492922, guid: 7ff1faac2e44756468ad87bc663f4a6b, type: 3}
   angleInBetween: 20
   radius: 0.2
   spawnLag: 0.02
