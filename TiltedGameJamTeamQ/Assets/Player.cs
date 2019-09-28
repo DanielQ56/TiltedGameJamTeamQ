@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public bool focusOn = 0;
+    public bool focusOn = false;
     public int speed = 10;
     public int life = 3;
-    private double InvurTime = 0.5;
-    private bool Invurnable = 0;
-    public Vector2D direction;
-    public 
-
+    public bool hit = false;
+    private float InvurTime = 0.5f;
+    private bool Invurnable = false;
+    public Vector2 direction;
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +23,12 @@ public class Player : MonoBehaviour
     void Update()
     {
         GetInput();
+        /*
         if ( OnHit() == true )
         {
             Iframe();
         }
+        */
     }
 
     public void Move()
@@ -58,27 +59,30 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            focusOn = 1;
+            focusOn = true;
             speed = 5;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            focusOn = 0;
+            focusOn = false;
             speed = 10;
         }
     }
 
+
+
     private void Iframe()
     {
-        Invurnable = 1;
-        InvurTime -= Time.deltatTime;
+        Invurnable = true;
+        InvurTime -= Time.deltaTime;
         if ( InvurTime == 0 )
         {
 
         }
     }
 
+    /*
     private bool OnHit()
     {
         //insert the hitbox and collision
@@ -90,7 +94,7 @@ public class Player : MonoBehaviour
                 life -= 1;
                 // insert code for invurnablility frame animation.
             }
-            else if ( life = 0 )
+            else if ( life == 0)
             {
                 life = 0;
                 // Insert Code for death animation and end game.
@@ -100,4 +104,6 @@ public class Player : MonoBehaviour
                 return false;
             }
     }
+    */
 }
+
