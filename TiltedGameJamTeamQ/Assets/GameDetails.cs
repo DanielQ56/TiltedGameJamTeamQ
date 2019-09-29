@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameDetails : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameDetails : MonoBehaviour
 
     [SerializeField] int phase = 1;
     [SerializeField] int waifu = 1;
+    [SerializeField] Image FadeImage;
 
     private void Awake()
     {
@@ -37,9 +39,40 @@ public class GameDetails : MonoBehaviour
     {
         phase += 1;
         waifu += 1;
-        SceneManager.LoadScene("waifu" + waifu.ToString());
-        //fade out fade in 
+        StartCoroutine(FadeIn());
         
+        
+    }
+
+    IEnumerator FadeOut()
+    {
+        Color change = FadeImage.color;
+        while(FadeImage.color.a > 0)
+        {
+            change.a -= Time.deltaTime;
+            FadeImage.color = change;
+            yield return null;
+        }
+        Player.canMove = true;
+    }
+
+    IEnumerator FadeIn()
+    {
+        Player.canMove = false;
+        Color change = FadeImage.color;
+        while (FadeImage.color.a < 1)
+        {
+            change.a += Time.deltaTime;
+            FadeImage.color = change;
+            yield return null;
+        }
+        SceneManager.LoadScene("waifu" + waifu.ToString());
+
+    }
+
+    void OnSceneLoaded(Scene loadedScene, LoadSceneMode sceneMode)
+    {
+        FadeOut();
     }
 
 }

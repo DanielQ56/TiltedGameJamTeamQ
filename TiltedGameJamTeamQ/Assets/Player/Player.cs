@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     bool isShooting = false;
 
+    public static bool canMove = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +29,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetInput();
-        Move();
+        if (canMove)
+        {
+            GetInput();
+            Move();
+        }
     }
 
     void Move()

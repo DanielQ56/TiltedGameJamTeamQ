@@ -16,18 +16,20 @@ public class BossHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentHealth <= 0)
-        {
-            GameDetails.instance.nextBoss();
-        }
+
 
     }
 
     public void DecreaseHealth()
     {
-        baseHealth -= 1;
+        currentHealth -= 1;
         if(currentHealth <= baseHealth / 2)
         {
+            if (currentHealth <= 0)
+            {
+                GameDetails.instance.nextBoss();
+                Destroy(this.gameObject);
+            }
             GameDetails.instance.ChangePhase();
         }
     }
