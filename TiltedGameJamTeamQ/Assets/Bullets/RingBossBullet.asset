@@ -17,4 +17,4 @@ MonoBehaviour:
   angleInBetween: 20
   radius: 0.1
   spawnLag: 0
-  bulletSpeed: 5
+  bulletSpeed: 2
