@@ -18,7 +18,7 @@ public class BossHealth : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
-            GameDetails.instance
+            GameDetails.instance.nextBoss();
         }
 
     }
