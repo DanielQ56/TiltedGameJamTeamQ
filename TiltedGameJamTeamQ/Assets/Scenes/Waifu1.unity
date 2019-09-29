@@ -877,10 +877,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 0244d0e051878c24eb59269b5b432711, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2781,6 +2781,11 @@ PrefabInstance:
       propertyPath: sprite
       value: 
       objectReference: {fileID: 1391161099}
+    - target: {fileID: 8453491983839615329, guid: 512028a242cf7a44a81d844018f5f6ea,
+        type: 3}
+      propertyPath: lifeImage
+      value: 
+      objectReference: {fileID: 719715746}
     - target: {fileID: 8453491984586032899, guid: 512028a242cf7a44a81d844018f5f6ea,
         type: 3}
       propertyPath: m_LocalScale.x
