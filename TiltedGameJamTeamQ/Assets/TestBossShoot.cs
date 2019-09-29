@@ -77,7 +77,8 @@ public class TestBossShoot : MonoBehaviour
         float radius = pool[i].GetRadius();
         float angleInBetween = pool[i].getAngleInBetween();
         float spawnLag = pool[i].getSpawnLag();
-        while (angle < 360f && revs != 3f)
+
+        while (angle < 360f && revs != 5f)
         {
             float rad = Mathf.Deg2Rad * angle;
             GameObject b = pool[i].GetUnusedObject(); //pool
@@ -97,6 +98,7 @@ public class TestBossShoot : MonoBehaviour
 
             yield return new WaitForSeconds(spawnLag);
             angle += angleInBetween;
+            revs += 1f;
 
         }
         isShooting[i] = false;
