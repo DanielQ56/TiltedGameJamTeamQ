@@ -544,6 +544,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ace917d8dd348d4495c5a0f2185b448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitbox: {fileID: 0}
+  sprite: {fileID: 0}
   speed: 10
   life: 3
   hit: 0
@@ -990,9 +992,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2100612626}
   - component: {fileID: 2100612625}
-  - component: {fileID: 2100612624}
   - component: {fileID: 2100612623}
   - component: {fileID: 2100612627}
+  - component: {fileID: 2100612624}
   m_Layer: 8
   m_Name: Boss1
   m_TagString: Untagged
@@ -1031,15 +1033,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2100612622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18ee65720b7613b42863126426410c22, type: 3}
+  m_Script: {fileID: 11500000, guid: ef62ffa1717f48e4284ea8d131117301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DestinationPoints:
   - {fileID: 360816981}
   - {fileID: 391636112}
   - {fileID: 1393853833}
-  maxWaitTime: 6
-  minWaitTime: 4
+  maxWaitTime: 3
+  minWaitTime: 5
 --- !u!212 &2100612625
 SpriteRenderer:
   m_ObjectHideFlags: 0
