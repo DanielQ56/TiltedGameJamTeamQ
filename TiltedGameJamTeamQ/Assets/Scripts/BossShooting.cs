@@ -36,7 +36,7 @@ public class BossShooting : MonoBehaviour
         if(timer <= 0)
         {
             if(!isShooting)
-                StartCoroutine(SpawnBullets());
+                StartCoroutine(PhaseOne());
         }
         else
         {
@@ -76,7 +76,9 @@ public class BossShooting : MonoBehaviour
         float revs = 0f;
         angle = 0f;
         isShooting = true;
-
+        float radius = pool.GetRadius();
+        float angleInBetween = pool.getAngleInBetween();
+        float spawnLag = pool.getSpawnLag();
         while (angle < 360f && revs != 3f)
         {
             float rad = Mathf.Deg2Rad * angle;
