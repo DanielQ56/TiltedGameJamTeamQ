@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3e681b4691726488901a326f907594, type: 3}
-  m_Name: PhaseThree
+  m_Script: {fileID: 11500000, guid: 8e298511c3db8714b8220717ddbef139, type: 3}
+  m_Name: ScatterBossBullet
   m_EditorClassIdentifier: 
-  minWaitTime: 4
-  maxWaitTime: 8
-  ConstantTime: 4
-  useConstantTime: 0
+  bulletPrefab: {fileID: 8018893471223492922, guid: 7ff1faac2e44756468ad87bc663f4a6b,
+    type: 3}
+  angleInBetween: 20
+  radius: 0.1
+  spawnLag: 0
+  bulletSpeed: 4

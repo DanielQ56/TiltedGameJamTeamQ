@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3352499120670663155, guid: b2999c4fef246324daae6dfb99b81d4f,
     type: 3}
-  angleInBetween: 12
+  angleInBetween: 20
   radius: 0.2
   spawnLag: 0.02
-  bulletSpeed: 1
+  bulletSpeed: 5
