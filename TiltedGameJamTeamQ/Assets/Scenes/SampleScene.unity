@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadd20f4deb61a94493fbc91ffc847a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase: 1
+  phase: 6
 --- !u!4 &355023618
 Transform:
   m_ObjectHideFlags: 0
@@ -621,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitbox: {fileID: 789439126315494783, guid: 2197fa2add9353443ab2e1122442261d, type: 3}
-  sprite: {fileID: 648409588}
+  sprite: {fileID: 648409592}
   speed: 10
   life: 3
   hit: 0

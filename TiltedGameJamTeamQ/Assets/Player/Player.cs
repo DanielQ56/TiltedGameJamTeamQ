@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject hitbox;
-    public GameObject sprite;
+    public SpriteRenderer sprite;
 
     public int speed = 10;
     public int life = 3;
@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
         Invurnable = true;
         Debug.Log("Invurnable");
         // insert code for invurnablility frame animation.
-        Debug.Log(sprite.activeSelf);
+
         DamageBlink();
         yield return new WaitForSeconds(InvurTime);
         Invurnable = false;
@@ -137,9 +137,9 @@ public class Player : MonoBehaviour
         float time = 0f;
         while(Invurnable)
         {
-            sprite.SetActive(false);
+            sprite.enabled = false;
             yield return new WaitForSeconds(0.1f);
-            sprite.SetActive(true);
+            sprite.enabled = true;
             yield return new WaitForSeconds(0.1f);
             time += Time.deltaTime;
             Debug.Log(time);
