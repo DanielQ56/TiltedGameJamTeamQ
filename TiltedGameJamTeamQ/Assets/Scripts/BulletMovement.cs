@@ -20,6 +20,14 @@ public class BulletMovement : MonoBehaviour
         this.transform.parent = null;
     }
 
+    public void Homing(Vector3 pos, float speed)
+    {
+        Debug.Log("Heyo");
+        this.transform.LookAt(pos);
+        rb.velocity = Vector3.Normalize(pos - this.transform.localPosition) * speed ;
+        this.transform.parent = null;
+    }
+
     private void OnBecameInvisible()
     {
         this.gameObject.SetActive(false);

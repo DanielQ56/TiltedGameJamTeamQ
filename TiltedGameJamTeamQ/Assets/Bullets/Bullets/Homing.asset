@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e298511c3db8714b8220717ddbef139, type: 3}
-  m_Name: MovingRingBossBullet
+  m_Name: Homing
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 596180434236723468, guid: e9d869e16f06cc147a34be76327146c7,
+  bulletPrefab: {fileID: 8434350028116284904, guid: f32a91218d83e994faad2bec3147dd37,
     type: 3}
-  angleInBetween: 20
-  radius: 0.1
-  spawnLag: 0.1
-  bulletSpeed: 2
-  layer: 
-  damage: 0
+  angleInBetween: 0
+  radius: 0.2
+  spawnLag: 0.05
+  bulletSpeed: 7
+  layer: Boss
+  damage: 5
