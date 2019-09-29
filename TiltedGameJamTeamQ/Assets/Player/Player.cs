@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public GameObject hitbox;
     public GameObject sprite;
+    public Image lifeImage;
 
     public int speed = 10;
     public int life = 3;
@@ -163,6 +165,7 @@ public class Player : MonoBehaviour
                 {
                     Debug.Log("hit");
                     life -= 1;
+                    lifeImage.fillAmount -= 0.33f;
                     StartCoroutine(Iframe());
                     StartCoroutine(DamageBlink());
                     Debug.Log(life);

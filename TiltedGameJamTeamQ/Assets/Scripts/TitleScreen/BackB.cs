@@ -18,7 +18,7 @@ public class BackB : Button
     }
     private void OnMouseDown()
     {
-        Debug.Log("Back");
+        sFxSource.Play();
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }

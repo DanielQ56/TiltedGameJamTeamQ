@@ -18,6 +18,7 @@ public class CreditB : Button
     }
     private void OnMouseDown()
     {
+        sFxSource.Play();
         Debug.Log("Credits");
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }

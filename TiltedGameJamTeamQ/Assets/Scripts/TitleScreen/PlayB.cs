@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class PlayB : Button
@@ -18,6 +19,9 @@ public class PlayB : Button
 
     private void OnMouseDown()
     {
-        Debug.Log("Play");
+        sFxSource.Play();
+        SceneManager.LoadScene("waifu1");
+
+
     }
 }
