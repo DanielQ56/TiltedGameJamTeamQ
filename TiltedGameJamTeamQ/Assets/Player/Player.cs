@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public GameObject hitbox;
-    public SpriteRenderer sprite;
+    public GameObject sprite;
 
     public int speed = 10;
     public int life = 3;
@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            speed = 10;
+            speed = 6;
             hitbox.SetActive(false);
             foreach (ObjectPool p in pools)
             {
@@ -137,9 +137,9 @@ public class Player : MonoBehaviour
         float time = 0f;
         while(Invurnable)
         {
-            sprite.enabled = false;
+            sprite.SetActive(false);
             yield return new WaitForSeconds(0.1f);
-            sprite.enabled = true;
+            sprite.SetActive(true);
             yield return new WaitForSeconds(0.1f);
             time += Time.deltaTime;
             Debug.Log(time);
