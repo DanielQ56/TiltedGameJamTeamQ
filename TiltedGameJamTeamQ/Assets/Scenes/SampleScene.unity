@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadd20f4deb61a94493fbc91ffc847a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase: 2
+  phase: 4
 --- !u!4 &355023618
 Transform:
   m_ObjectHideFlags: 0
@@ -484,7 +484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &648409589
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -762,6 +762,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1054551523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1054551524}
+  - component: {fileID: 1054551525}
+  m_Layer: 8
+  m_Name: BossBulletPoolThird
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1054551524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054551523}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2100612626}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1054551525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054551523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c76c7501d8b824195eefdae757a624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToPool: {fileID: 11400000, guid: 04ea038a9e4986140bebd3fb0c5a960f, type: 2}
+  poolMax: 40
+  shouldExpand: 1
 --- !u!1 &1393853832
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +934,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2064834152
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2064834153}
+  - component: {fileID: 2064834154}
+  m_Layer: 8
+  m_Name: BossBulletPoolFour
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2064834153
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064834152}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2100612626}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2064834154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064834152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c76c7501d8b824195eefdae757a624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToPool: {fileID: 11400000, guid: 725f6536d9faec6499c4d9d079d01608, type: 2}
+  poolMax: 40
+  shouldExpand: 1
 --- !u!1 &2100612622
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,6 +992,7 @@ GameObject:
   - component: {fileID: 2100612625}
   - component: {fileID: 2100612624}
   - component: {fileID: 2100612623}
+  - component: {fileID: 2100612627}
   m_Layer: 8
   m_Name: Boss1
   m_TagString: Untagged
@@ -923,9 +1016,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e924c15476435ed44aa1d6810a327224, type: 2}
   - {fileID: 11400000, guid: a009409038b2cc745a24ed4d604b9d66, type: 2}
   - {fileID: 11400000, guid: 63de6fc6304e0d5489b3ea82b9a66b79, type: 2}
+  - {fileID: 11400000, guid: efe9060805698c7428a1ea5edddb458b, type: 2}
   pool:
   - {fileID: 931903804}
   - {fileID: 202259029}
+  - {fileID: 1054551525}
+  - {fileID: 2064834154}
 --- !u!114 &2100612624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1006,6 +1102,21 @@ Transform:
   m_Children:
   - {fileID: 931903803}
   - {fileID: 202259028}
+  - {fileID: 1054551524}
+  - {fileID: 2064834153}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2100612627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100612622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656209a5eb761e647854100033914fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseHealth: 5000

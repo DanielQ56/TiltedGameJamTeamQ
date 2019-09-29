@@ -27,6 +27,8 @@ public class BossShooting : MonoBehaviour
         listOfAttacks = new List<Attacks>();
         listOfAttacks.Add(One);
         listOfAttacks.Add(Two);
+        listOfAttacks.Add(Three);
+        listOfAttacks.Add(Four);
         foreach(Attacks a in listOfAttacks)
         {
             isShooting.Add(false);
@@ -73,6 +75,16 @@ public class BossShooting : MonoBehaviour
     void Two(int index)
     {
         StartCoroutine(PhaseTwo(index));
+    }
+
+    void Three(int index)
+    {
+        StartCoroutine(PhaseThree(index));
+    }
+
+    void Four(int index)
+    {
+        StartCoroutine(PhaseFour(index));
     }
 
     IEnumerator PhaseOne(int i)
@@ -131,5 +143,72 @@ public class BossShooting : MonoBehaviour
         isShooting[i] = false;
     }
 
+    IEnumerator PhaseThree(int i)
+    {
+        float revs = 0f;
+        angle = 0f;
+        List<GameObject> movement = new List<GameObject>();
+        isShooting[i] = true;
+        float radius = pool[i].GetRadius();
+        float angleInBetween = pool[i].getAngleInBetween();
+        float spawnLag = pool[i].getSpawnLag();
+
+        while (revs < 3f)
+        {
+            while (angle < 360f)
+            {
+                float rad = Mathf.Deg2Rad * angle;
+                GameObject b = pool[i].GetUnusedObject();
+                b.SetActive(true);
+                b.GetComponent<SpriteRenderer>().enabled = false;
+                b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * (radius);
+                movement.Add(b);
+                yield return new WaitForSeconds(spawnLag);
+                angle += angleInBetween;
+
+            }
+            foreach (GameObject b in movement)
+            {
+                b.GetComponent<SpriteRenderer>().enabled = true;
+                b.GetComponent<BulletMovement>().FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
+            }
+
+            Debug.Log(radius + (revs * 0.2f));
+            revs += 1f;
+            angle = 0f;
+            movement = new List<GameObject>();
+
+        }
+
+        isShooting[i] = false;
+    }
+
+    IEnumerator PhaseFour(int i)
+    {
+        angle = 0f;
+        List<GameObject> movement = new List<GameObject>();
+        isShooting[i] = true;
+        float radius = pool[i].GetRadius();
+        float angleInBetween = pool[i].getAngleInBetween();
+        float spawnLag = pool[i].getSpawnLag();
+        while (angle < 360f)
+        {
+            float rad = Mathf.Deg2Rad * angle;
+            GameObject b = pool[i].GetUnusedObject();
+            b.SetActive(true);
+            b.GetComponent<SpriteRenderer>().enabled = false;
+            b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * Random.Range(radius, radius + 0.1f);
+            movement.Add(b);
+            yield return new WaitForSeconds(spawnLag);
+            angle += angleInBetween + Random.Range(-10f, 10f);
+        }
+        foreach (GameObject b in movement)
+        {
+            b.GetComponent<SpriteRenderer>().enabled = true;
+
+            b.GetComponent<BulletMovement>().FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
+        }
+        isShooting[i] = false;
+    }
 
 }
