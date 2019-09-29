@@ -25,7 +25,7 @@ public class TestBossShoot : MonoBehaviour
         timers = new List<float>();
         isShooting = new List<bool>();
         listOfAttacks = new List<Attacks>();
-        listOfAttacks.Add(SpawnBullets);
+        listOfAttacks.Add(One);
         foreach (Attacks a in listOfAttacks)
         {
             isShooting.Add(false);
@@ -37,7 +37,6 @@ public class TestBossShoot : MonoBehaviour
     void Update()
     {
         Shoot();
-
     }
 
     void Shoot()
@@ -65,6 +64,11 @@ public class TestBossShoot : MonoBehaviour
         }
     }
 
+    void One(int index)
+    {
+        StartCoroutine(SpawnBullets(index));
+    }
+
     IEnumerator SpawnBullets(int i)
     {
         float revs = 0f;
@@ -83,14 +87,16 @@ public class TestBossShoot : MonoBehaviour
             b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * radius;
             b2.FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
 
+            float rad2 = Mathf.Deg2Rad * angle + Mathf.PI;
+            GameObject b3 = pool[i].GetUnusedObject(); //pool
+            b3.SetActive(true); //pool
+            BulletMovement b4 = b3.GetComponent<BulletMovement>();
+
+            b3.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad2), Mathf.Sin(rad2))) * radius;
+            b4.FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
+
             yield return new WaitForSeconds(spawnLag);
             angle += angleInBetween;
-
-            if (angle >= 360)
-            {
-                angle = 0f + (revs * 30);
-                revs++;
-            }
 
         }
         isShooting[i] = false;
