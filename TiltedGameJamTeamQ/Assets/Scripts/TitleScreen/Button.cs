@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Button : MonoBehaviour
 {
+    [SerializeField] protected AudioClip clicksFx;
+    [SerializeField] protected AudioSource sFxSource;
 
+    private void Awake()
+    {
+        sFxSource.clip = clicksFx;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +30,11 @@ public class Button : MonoBehaviour
     private void OnMouseExit()
     {
         transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    private void OnMouseDown()
+    {
+        sFxSource.Play();
     }
 
 }

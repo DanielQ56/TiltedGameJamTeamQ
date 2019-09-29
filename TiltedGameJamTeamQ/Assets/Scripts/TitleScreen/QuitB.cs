@@ -17,6 +17,7 @@ public class QuitB : Button
     }
     private void OnMouseDown()
     {
+        sFxSource.Play();
         Application.Quit();
     }
 }
