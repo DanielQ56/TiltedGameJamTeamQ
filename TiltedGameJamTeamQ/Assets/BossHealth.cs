@@ -23,14 +23,14 @@ public class BossHealth : MonoBehaviour
     public void DecreaseHealth()
     {
         currentHealth -= 1;
-        if(currentHealth <= baseHealth / 2)
+        if(currentHealth == baseHealth / 2)
         {
-            if (currentHealth <= 0)
-            {
-                GameDetails.instance.nextBoss();
-                Destroy(this.gameObject);
-            }
             GameDetails.instance.ChangePhase();
+        }
+        if (currentHealth <= 0)
+        {
+            GameDetails.instance.nextBoss();
+            Destroy(this.gameObject);
         }
     }
 

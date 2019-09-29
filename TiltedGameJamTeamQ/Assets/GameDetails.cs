@@ -32,11 +32,13 @@ public class GameDetails : MonoBehaviour
 
     public void ChangePhase()
     {
-        phase += 1;
+            phase += 1;
+       
     }
 
     public void nextBoss()
     {
+        Debug.Log("Hey");
         phase += 1;
         waifu += 1;
         StartCoroutine(FadeIn());
