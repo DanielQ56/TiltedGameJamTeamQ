@@ -22,13 +22,22 @@ public class LevelDialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject p = GameObject.Find("Player");
+        //GameObject p = GameObject.Find("Player");
         //p_Movement = p.GetComponent<PlayerLevelMovement>();
         //p_Interaction = p.GetComponent<PlayerLevelInteraction>();
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            started = true;
+            entered = true;
+            //FreezePlayer();
+            dialoguePanel.SetActive(true);
+            StartCoroutine(ReadLine());
+        }
+
         if(started && Input.GetKeyDown(KeyCode.P))
         {
             waitingToContinue = false;
