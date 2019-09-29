@@ -25,9 +25,7 @@ public class BulletMovement : MonoBehaviour
     public void Homing(Vector3 pos, float speed, string layer)
     {
         this.gameObject.layer = LayerMask.NameToLayer(layer);
-        Debug.Log("Heyo");
         this.transform.LookAt(pos, Vector3.forward);
-        Debug.Log(speed);
         rb.velocity = Vector3.Normalize(pos - this.transform.position) * speed ;
         this.transform.parent = null;
     }
@@ -38,7 +36,7 @@ public class BulletMovement : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(this.gameObject.layer != other.gameObject.layer)
         {

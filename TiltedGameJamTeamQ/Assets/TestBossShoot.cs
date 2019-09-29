@@ -100,7 +100,7 @@ public class TestBossShoot : MonoBehaviour
             foreach (GameObject bullet in movement)
             {
                 bullet.GetComponent<SpriteRenderer>().enabled = true;
-                bullet.GetComponent<BulletMovement>().FireOff(bullet.transform.localPosition + Vector3.up, pool[i].GetBulletSpeed());
+                //bullet.GetComponent<BulletMovement>().FireOff(bullet.transform.localPosition + Vector3.up, pool[i].GetBulletSpeed());
             }
             movement = new List<GameObject>();
         }
