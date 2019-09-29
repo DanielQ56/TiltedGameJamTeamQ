@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e298511c3db8714b8220717ddbef139, type: 3}
-  m_Name: BasicBossBullet
+  m_Name: SpiralBossBullet
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8018893471223492922, guid: 7ff1faac2e44756468ad87bc663f4a6b,
+  bulletPrefab: {fileID: 3352499120670663155, guid: b2999c4fef246324daae6dfb99b81d4f,
     type: 3}
   angleInBetween: 12
-  radius: 0.5
+  radius: 0.2
   spawnLag: 0.02
-  bulletSpeed: 20
+  bulletSpeed: 1

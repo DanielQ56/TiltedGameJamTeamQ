@@ -57,12 +57,13 @@ public class BossMovement : MonoBehaviour
 
     void ChooseNewDestination()
     {
-        if (BossStats.instance.GetDifficultyLevel() > 1)
+        int phase = GameDetails.instance.GetCurrentPhase();
+        if (phase > 1)
         {
-            Transform t = DestinationPoints[Random.Range(0, BossStats.instance.GetDifficultyLevel())];
+            Transform t = DestinationPoints[Random.Range(0, phase)];
             while (t.position == this.transform.position)
             {
-                t = DestinationPoints[Random.Range(0, BossStats.instance.GetDifficultyLevel() + 1)];
+                t = DestinationPoints[Random.Range(0,phase)];
             }
             StartCoroutine(MoveToNewPosition(t));
         }
