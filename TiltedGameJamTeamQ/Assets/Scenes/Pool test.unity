@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c76c7501d8b824195eefdae757a624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 11400000, guid: 9526e7e906c5cbd43820d612efa6913e, type: 2}
+  objectToPool: {fileID: 11400000, guid: 04ea038a9e4986140bebd3fb0c5a960f, type: 2}
   poolMax: 40
   shouldExpand: 1
 --- !u!1 &1900780182
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8018893471223492922, guid: 7ff1faac2e44756468ad87bc663f4a6b, type: 3}
-  angleInBetween: 20
+  angleInBetween: 10
   radius: 0.2
   spawnLag: 0.02
   minWaitTime: 1
