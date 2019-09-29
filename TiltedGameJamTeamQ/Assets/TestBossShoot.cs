@@ -44,29 +44,35 @@ public class TestBossShoot : MonoBehaviour
     {
         float revs = 0f;
         angle = 0f;
+        List<GameObject> movement = new List<GameObject>();
         isShooting = true;
-        
-        while (angle < 360f && revs != 3f)
+        float radius = pool.GetRadius();
+        float angleInBetween = pool.getAngleInBetween();
+        float spawnLag = pool.getSpawnLag();
+        while (angle < 360f && revs != 3)
         {
             float rad = Mathf.Deg2Rad * angle;
-            GameObject b = pool.GetUnusedObject(); //pool
-            b.SetActive(true); //pool
-            BulletMovement b2 = b.GetComponent<BulletMovement>();
-            
+            GameObject b = pool.GetUnusedObject();
+            b.SetActive(true);
+            b.GetComponent<SpriteRenderer>().enabled = false;
             b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * radius;
-            b2.FireOff(this.transform.position, pool.GetBulletSpeed());
-
+            movement.Add(b);    
             yield return new WaitForSeconds(spawnLag);
             angle += angleInBetween;
 
             if (angle >= 360)
             {
-                angle = 0f + (revs * 30);
+                angle = 0f;
+                radius += 0.2f;
                 revs++;
             }
-                
         }
+        foreach (GameObject b in movement)
+        {
+            b.GetComponent<SpriteRenderer>().enabled = true;
 
+            b.GetComponent<BulletMovement>().FireOff(pool.transform.localPosition, pool.GetBulletSpeed());
+        }
         isShooting = false;
         waitingToShoot = false;
     }
