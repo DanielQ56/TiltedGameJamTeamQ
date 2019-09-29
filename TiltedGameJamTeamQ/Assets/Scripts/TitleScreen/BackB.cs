@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class PlayButton : MonoBehaviour
+public class BackB : Button
 {
     // Start is called before the first frame update
     void Start()
@@ -15,9 +16,9 @@ public class PlayButton : MonoBehaviour
     {
         
     }
-
-    private void OnMouseOver()
+    private void OnMouseDown()
     {
-        
+        Debug.Log("Back");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }

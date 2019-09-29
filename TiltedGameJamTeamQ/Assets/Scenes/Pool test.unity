@@ -496,7 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c76c7501d8b824195eefdae757a624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPool: {fileID: 11400000, guid: 3f3766da9a904b841bb87f69bb357e38, type: 2}
+  objectToPool: {fileID: 11400000, guid: 473f14e85f7fd3147b079ab9ece8abea, type: 2}
   poolMax: 40
   shouldExpand: 1
 --- !u!1 &1900780182
@@ -578,6 +578,9 @@ MonoBehaviour:
   DestinationPoints: []
   maxWaitTime: 0
   minWaitTime: 0
+  waitingToMove: 0
+  moving: 0
+  waitTimer: 0
 --- !u!212 &2100612625
 SpriteRenderer:
   m_ObjectHideFlags: 0
