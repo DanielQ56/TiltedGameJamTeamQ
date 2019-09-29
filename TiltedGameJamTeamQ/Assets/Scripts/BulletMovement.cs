@@ -38,7 +38,7 @@ public class BulletMovement : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(this.gameObject.layer != other.gameObject.layer)
         {

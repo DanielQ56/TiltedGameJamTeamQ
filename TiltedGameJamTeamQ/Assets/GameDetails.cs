@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameDetails : MonoBehaviour
@@ -7,6 +8,7 @@ public class GameDetails : MonoBehaviour
     public static GameDetails instance;
 
     [SerializeField] int phase = 1;
+    [SerializeField] int waifu = 1;
 
     private void Awake()
     {
@@ -19,11 +21,6 @@ public class GameDetails : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-    }
-
-    public void LoadNextScene(string scene)
-    {
-        phase += 1;
     }
 
     public int GetCurrentPhase()
@@ -39,5 +36,10 @@ public class GameDetails : MonoBehaviour
     public void nextBoss()
     {
         phase += 1;
+        waifu += 1;
+        SceneManager.LoadScene("waifu" + waifu.ToString());
+        //fade out fade in 
+        
     }
+
 }
