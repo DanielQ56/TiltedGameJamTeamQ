@@ -172,7 +172,9 @@ public class Player : MonoBehaviour
                     {
                         life = 0;
                         // Insert Code for death animation and end game.
+                        Application.Quit();
                         Destroy(this.gameObject);
+                        
                     }
                 }
             }

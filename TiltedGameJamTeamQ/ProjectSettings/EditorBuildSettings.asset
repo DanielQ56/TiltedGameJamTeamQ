@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Waifu1.unity
     guid: 14ed5b63c61f08842b00d8cd23907db2
+  - enabled: 1
+    path: Assets/Scenes/Waifu2.unity
+    guid: 8e3bdc52728096c4bb4a65c6eefaa09a
+  - enabled: 1
+    path: Assets/Scenes/Waifu3.unity
+    guid: ba8e5b11863f7e34e8167c3dc19ff6b7
   m_configObjects: {}
