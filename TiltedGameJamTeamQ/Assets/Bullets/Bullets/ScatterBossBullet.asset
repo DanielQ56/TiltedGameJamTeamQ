@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e298511c3db8714b8220717ddbef139, type: 3}
   m_Name: ScatterBossBullet
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8018893471223492922, guid: 7ff1faac2e44756468ad87bc663f4a6b,
+  bulletPrefab: {fileID: 685321098148924816, guid: c55b9d876aae18746b124215635a6c9a,
     type: 3}
   angleInBetween: 20
   radius: 0.1

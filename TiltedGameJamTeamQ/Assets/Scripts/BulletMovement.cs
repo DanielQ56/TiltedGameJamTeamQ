@@ -11,7 +11,7 @@ public class BulletMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        this.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        this.transform.localScale = Vector3.one * 0.25f;
     }
 
     public void FireOff(Vector3 pos, float speed)

@@ -10,4 +10,6 @@ public class ScriptableBullet : ScriptableObject
     public float radius;
     public float spawnLag;
     public float bulletSpeed;
+    //public string layer;
+   // public int damage;
 }
