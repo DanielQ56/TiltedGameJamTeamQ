@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
             GameObject b = p.GetUnusedObject();
             b.SetActive(true);
             b.transform.localPosition = p.gameObject.transform.localPosition + (p.gameObject.transform.up * 0.01f);
-            b.GetComponent<BulletMovement>().FireOff(p.transform.localPosition, p.GetBulletSpeed());
+            b.GetComponent<BulletMovement>().FireOff(p.transform.localPosition, p.GetBulletSpeed(), p.GetLayer());
         }
         yield return new WaitForSeconds(0.05f);
         isShooting = false;
@@ -146,11 +146,12 @@ public class Player : MonoBehaviour
         }
     }
 
+
     /*Detects if the player collides with a bullet and loses a heart if hit.\
      */
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Bullet")
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Boss"))
         {
             if (Invurnable == false)
             {

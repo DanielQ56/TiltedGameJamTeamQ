@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class BulletMovement : MonoBehaviour
 {
@@ -14,17 +15,20 @@ public class BulletMovement : MonoBehaviour
         this.transform.localScale = Vector3.one * 0.25f;
     }
 
-    public void FireOff(Vector3 pos, float speed)
+    public void FireOff(Vector3 pos, float speed, string layer)
     {
+        this.gameObject.layer = LayerMask.NameToLayer(layer);
         rb.velocity = Vector3.Normalize(this.transform.localPosition - pos) * speed;
         this.transform.parent = null;
     }
 
-    public void Homing(Vector3 pos, float speed)
+    public void Homing(Vector3 pos, float speed, string layer)
     {
+        this.gameObject.layer = LayerMask.NameToLayer(layer);
         Debug.Log("Heyo");
-        this.transform.LookAt(pos);
-        rb.velocity = Vector3.Normalize(pos - this.transform.localPosition) * speed ;
+        this.transform.LookAt(pos, Vector3.forward);
+        Debug.Log(speed);
+        rb.velocity = Vector3.Normalize(pos - this.transform.position) * speed ;
         this.transform.parent = null;
     }
 
@@ -33,4 +37,19 @@ public class BulletMovement : MonoBehaviour
         this.gameObject.SetActive(false);
 
     }
+
+    private void OnTriggerEnter2D(Collider other)
+    {
+        if(this.gameObject.layer != other.gameObject.layer)
+        {
+            try
+            {
+                other.gameObject.GetComponent<BossHealth>().DecreaseHealth();
+            }
+            catch(NullReferenceException)
+            {
+            }
+        }
+    }
+
 }

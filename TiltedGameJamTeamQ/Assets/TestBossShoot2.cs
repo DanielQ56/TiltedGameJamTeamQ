@@ -63,7 +63,7 @@ public class TestBossShoot2 : MonoBehaviour
         {
             b.GetComponent<SpriteRenderer>().enabled = true;
 
-            b.GetComponent<BulletMovement>().FireOff(pool.transform.localPosition, pool.GetBulletSpeed());
+            //b.GetComponent<BulletMovement>().FireOff(pool.transform.localPosition, pool.GetBulletSpeed(),pool[i].GetLayer());
         }
         isShooting = false;
         waitingToShoot = false;

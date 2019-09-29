@@ -120,7 +120,7 @@ public class BossShooting : MonoBehaviour
         }
         foreach(BulletMovement b in movement)
         {
-            b.FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
+            b.FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed(), pool[i].GetLayer());
         }
         isShooting[i] = false;
     }
@@ -141,7 +141,7 @@ public class BossShooting : MonoBehaviour
             BulletMovement b2 = b.GetComponent<BulletMovement>();
 
             b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * radius;
-            b2.FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
+            b2.FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed(), pool[i].GetLayer());
 
             yield return new WaitForSeconds(spawnLag);
             angle += angleInBetween;
@@ -183,7 +183,7 @@ public class BossShooting : MonoBehaviour
             foreach (GameObject b in movement)
             {
                 b.GetComponent<SpriteRenderer>().enabled = true;
-                b.GetComponent<BulletMovement>().FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
+                b.GetComponent<BulletMovement>().FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed(), pool[i].GetLayer());
             }
 
             revs += 1f;
@@ -218,7 +218,7 @@ public class BossShooting : MonoBehaviour
         {
             b.GetComponent<SpriteRenderer>().enabled = true;
 
-            b.GetComponent<BulletMovement>().FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
+            b.GetComponent<BulletMovement>().FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed(), pool[i].GetLayer());
         }
         isShooting[i] = false;
     }
@@ -239,7 +239,7 @@ public class BossShooting : MonoBehaviour
             BulletMovement b2 = b.GetComponent<BulletMovement>();
 
             b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * radius;
-            b2.FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
+            b2.FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed(), pool[i].GetLayer());
 
             float rad2 = Mathf.Deg2Rad * angle + Mathf.PI;
             GameObject b3 = pool[i].GetUnusedObject(); //pool
@@ -247,7 +247,7 @@ public class BossShooting : MonoBehaviour
             BulletMovement b4 = b3.GetComponent<BulletMovement>();
 
             b3.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad2), Mathf.Sin(rad2))) * radius;
-            b4.FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
+            b4.FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed(), pool[i].GetLayer());
 
             yield return new WaitForSeconds(spawnLag);
             angle += angleInBetween;
@@ -273,7 +273,7 @@ public class BossShooting : MonoBehaviour
             GameObject b = pool[i].GetUnusedObject();
             b.SetActive(true);
             b.transform.localPosition =  Vector3.Normalize((player.transform.position - pool[i].transform.position)) * radius;
-            b.GetComponent<BulletMovement>().Homing(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
+            b.GetComponent<BulletMovement>().Homing(player.transform.position, pool[i].GetBulletSpeed(), pool[i].GetLayer());
             yield return new WaitForSeconds(spawnLag);
             numberSpawned += 1;
         }

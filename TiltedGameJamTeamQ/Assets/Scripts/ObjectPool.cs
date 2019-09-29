@@ -73,4 +73,9 @@ public class ObjectPool : MonoBehaviour
     {
         this.transform.eulerAngles = originalRotation;
     }
+
+    public string GetLayer()
+    {
+        return objectToPool.layer;
+    }
 }

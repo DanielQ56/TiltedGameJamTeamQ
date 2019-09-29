@@ -30,4 +30,9 @@ public class GameDetails : MonoBehaviour
     {
         return phase;
     }
+
+    public void ChangePhase()
+    {
+        phase += 1;
+    }
 }

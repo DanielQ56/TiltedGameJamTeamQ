@@ -18,3 +18,4 @@ MonoBehaviour:
   radius: 0.1
   spawnLag: 0
   bulletSpeed: 4
+  layer: Boss

@@ -18,3 +18,4 @@ MonoBehaviour:
   radius: 0
   spawnLag: 0
   bulletSpeed: 20
+  layer: Player
