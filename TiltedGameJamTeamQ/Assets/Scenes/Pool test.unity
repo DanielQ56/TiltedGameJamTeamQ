@@ -517,8 +517,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8018893471223492922, guid: 7ff1faac2e44756468ad87bc663f4a6b, type: 3}
-  angleInBetween: 10
-  radius: 0.2
+  angleInBetween: 20
+  radius: 0.1
   spawnLag: 0.02
   minWaitTime: 1
   maxWaitTime: 3
