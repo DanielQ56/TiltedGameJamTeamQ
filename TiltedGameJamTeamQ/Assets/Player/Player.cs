@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject hitbox;
+    public GameObject sprite;
+
     public int speed = 10;
     public int life = 3;
     public bool hit = false;
-    public double InvurTime = 0.5;
+    public float InvurTime = 1.5f;
     public bool Invurnable = false;
     public Vector2 direction;
+
+    Rigidbody2D rb;
     [SerializeField] List<ObjectPool> pools;
 
     bool isShooting = false;
@@ -17,6 +22,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -26,9 +32,9 @@ public class Player : MonoBehaviour
         Move();
     }
 
-    public void Move()
+    void Move()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        rb.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed;
     }
 
     // Activates focus that will narrow the bullet spread and slows player down
@@ -36,6 +42,7 @@ public class Player : MonoBehaviour
     public void Focus()
     {
         speed = 3;
+        hitbox.SetActive(true);
         foreach(ObjectPool p in pools)
         {
             p.Straighten();
@@ -56,7 +63,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 10;
-            foreach(ObjectPool p in pools)
+            hitbox.SetActive(false);
+            foreach (ObjectPool p in pools)
             {
                 p.Revert();
             }
@@ -96,18 +104,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    /*Turns on a Invurnability frame for 0.5 seconds after getting hit.
-     */
-    private void Iframe()
-    {
-        Invurnable = true;
-        InvurTime -= Time.deltaTime;
-        if ( InvurTime == 0 )
-        {
-            Invurnable = false;
-        }
-    }
-
     IEnumerator Shoot()
     {
         isShooting = true;
@@ -122,25 +118,56 @@ public class Player : MonoBehaviour
         isShooting = false;
     }
 
-    
+    /*Turns on a Invurnability frame for 0.5 seconds after getting hit.
+ */
+    IEnumerator Iframe()
+    {
+        Invurnable = true;
+        Debug.Log("Invurnable");
+        // insert code for invurnablility frame animation.
+        Debug.Log(sprite.activeSelf);
+        DamageBlink();
+        yield return new WaitForSeconds(InvurTime);
+        Invurnable = false;
+        Debug.Log("no longer");
+    }
+
+    IEnumerator DamageBlink()
+    {
+        float time = 0f;
+        while(Invurnable)
+        {
+            sprite.SetActive(false);
+            yield return new WaitForSeconds(0.1f);
+            sprite.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            time += Time.deltaTime;
+            Debug.Log(time);
+        }
+    }
 
     /*Detects if the player collides with a bullet and loses a heart if hit.\
      */
-    void OnCollisionEnter2D(Collision2D collider)
+    public void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Bullet")
         {
-            if (life > 0)
+            if (Invurnable == false)
             {
-                life -= 1;
-                Iframe();
-                // insert code for invurnablility frame animation.
-            }
-            else if (life == 0)
-            {
-                life = 0;
-                // Insert Code for death animation and end game.
-                Destroy(this.gameObject);
+                if (life > 0)
+                {
+                    Debug.Log("hit");
+                    life -= 1;
+                    StartCoroutine(Iframe());
+                    StartCoroutine(DamageBlink());
+                    Debug.Log(life);
+                    if (life == 0)
+                    {
+                        life = 0;
+                        // Insert Code for death animation and end game.
+                        Destroy(this.gameObject);
+                    }
+                }
             }
         }
     }
