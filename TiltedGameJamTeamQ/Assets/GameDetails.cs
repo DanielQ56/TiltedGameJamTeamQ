@@ -35,4 +35,9 @@ public class GameDetails : MonoBehaviour
     {
         phase += 1;
     }
+
+    public void nextBoss()
+    {
+        phase += 1;
+    }
 }
