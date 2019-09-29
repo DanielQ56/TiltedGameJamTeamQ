@@ -71,36 +71,40 @@ public class TestBossShoot : MonoBehaviour
 
     IEnumerator SpawnBullets(int i)
     {
-        float revs = 0f;
-        angle = 0f;
+        float timer = 0f;
+        List<GameObject> movement = new List<GameObject>();
         isShooting[i] = true;
         float radius = pool[i].GetRadius();
         float angleInBetween = pool[i].getAngleInBetween();
         float spawnLag = pool[i].getSpawnLag();
+        angle = 170f;
+        float bulletSpace = 0f;
 
-        while (angle < 360f && revs != 5f)
+        while (timer < 10f)
         {
-            float rad = Mathf.Deg2Rad * angle;
-            GameObject b = pool[i].GetUnusedObject(); //pool
-            b.SetActive(true); //pool
-            BulletMovement b2 = b.GetComponent<BulletMovement>();
+            Vector3 pos = pool[i].transform.localPosition + (Vector3.down * radius);
 
-            b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * radius;
-            b2.FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
+            while (bulletSpace < 5f)
+            {
+                GameObject b = pool[i].GetUnusedObject();
+                b.SetActive(true);
+                //b.GetComponent<SpriteRenderer>().enabled = false;
+                
+                b.transform.localPosition = new Vector3(pos.x + (0.1f * bulletSpace), pos.y, pos.z);
+                movement.Add(b);
+                yield return new WaitForSeconds(spawnLag);
+                angle += angleInBetween;
+                bulletSpace += 1f;
+            }
 
-            float rad2 = Mathf.Deg2Rad * angle + Mathf.PI;
-            GameObject b3 = pool[i].GetUnusedObject(); //pool
-            b3.SetActive(true); //pool
-            BulletMovement b4 = b3.GetComponent<BulletMovement>();
-
-            b3.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad2), Mathf.Sin(rad2))) * radius;
-            b4.FireOff(pool[i].transform.localPosition, pool[i].GetBulletSpeed());
-
-            yield return new WaitForSeconds(spawnLag);
-            angle += angleInBetween;
-            revs += 1f;
-
+            foreach (GameObject bullet in movement)
+            {
+                bullet.GetComponent<SpriteRenderer>().enabled = true;
+                bullet.GetComponent<BulletMovement>().FireOff(bullet.transform.localPosition + Vector3.up, pool[i].GetBulletSpeed());
+            }
+            movement = new List<GameObject>();
         }
+        Debug.Log("bye");
         isShooting[i] = false;
     }
 
