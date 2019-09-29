@@ -19,7 +19,7 @@ public class PlayB : Button
 
     private void OnMouseDown()
     {
-        Debug.Log("Play");
+        sFxSource.Play();
         SceneManager.LoadScene("waifu1");
 
 
