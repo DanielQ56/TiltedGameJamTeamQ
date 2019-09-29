@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayButton : MonoBehaviour
+public class Button : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -16,8 +16,12 @@ public class PlayButton : MonoBehaviour
         
     }
 
-    private void OnMouseOver()
+    private void OnMouseEnter()
     {
-        
+        transform.localScale += new Vector3(.1f, .1f, .1f);
+    }
+    private void OnMouseExit()
+    {
+        transform.localScale = new Vector3(1f, 1f, 1f);
     }
 }
