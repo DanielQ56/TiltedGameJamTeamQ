@@ -165,7 +165,6 @@ public class Player : MonoBehaviour
                 {
                     Debug.Log("hit");
                     life -= 1;
-                    lifeImage.fillAmount -= 0.33f;
                     StartCoroutine(Iframe());
                     StartCoroutine(DamageBlink());
                     Debug.Log(life);

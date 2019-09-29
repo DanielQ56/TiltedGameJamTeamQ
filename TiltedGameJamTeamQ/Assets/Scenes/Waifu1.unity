@@ -372,7 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadd20f4deb61a94493fbc91ffc847a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase: 6
+  phase: 1
   waifu: 1
   FadeImage: {fileID: 1450884053}
 --- !u!4 &355023618
@@ -1200,6 +1200,7 @@ RectTransform:
   - {fileID: 1694985100}
   - {fileID: 1112190309}
   - {fileID: 1971540677}
+  - {fileID: 1450884052}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1624,7 +1625,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 918024795}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2657,7 +2658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656209a5eb761e647854100033914fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 1
+  baseHealth: 5000
 --- !u!61 &2100612628
 BoxCollider2D:
   m_ObjectHideFlags: 0
