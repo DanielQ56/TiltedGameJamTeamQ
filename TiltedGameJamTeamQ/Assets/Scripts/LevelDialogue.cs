@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class LevelDialogue : MonoBehaviour
 {
@@ -10,8 +11,8 @@ public class LevelDialogue : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] List<string> levelDialogue;
 
-    //PlayerLevelMovement p_Movement;
-    //PlayerLevelInteraction p_Interaction;
+    public UnityEvent done;
+
 
     bool started = false;
 
@@ -19,30 +20,21 @@ public class LevelDialogue : MonoBehaviour
     bool doneWithDialogue = false;
     bool entered = false;
 
+
+    private void Awake()
+    {
+        done = new UnityEvent();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        //GameObject p = GameObject.Find("Player");
-        //p_Movement = p.GetComponent<PlayerLevelMovement>();
-        //p_Interaction = p.GetComponent<PlayerLevelInteraction>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            started = true;
-            entered = true;
-            //FreezePlayer();
-            dialoguePanel.SetActive(true);
-            StartCoroutine(ReadLine());
-        }
-
         if(started && Input.GetKeyDown(KeyCode.P))
         {
-            waitingToContinue = false;
-            UnfreezePlayer();
-            dialoguePanel.SetActive(false);
+            Done();
         }
         if (waitingToContinue)
         {
@@ -55,12 +47,25 @@ public class LevelDialogue : MonoBehaviour
                 }
                 else
                 {
-                    waitingToContinue = false;
-                    UnfreezePlayer();
-                    dialoguePanel.SetActive(false);
+                    Done();
                 }
             }
         }
+    }
+
+    public void StartDialogue()
+    {
+        started = true;
+        dialoguePanel.SetActive(true);
+        StartCoroutine(ReadLine());
+    }
+
+    void Done()
+    {
+        waitingToContinue = false;
+        dialoguePanel.SetActive(false);
+        done.Invoke();
+        Destroy(this.gameObject);
     }
 
     void NextLine()
@@ -86,30 +91,4 @@ public class LevelDialogue : MonoBehaviour
         NextLine();
     }
 
-    void FreezePlayer()
-    {
-        //p_Movement.frozen = true;
-        //p_Interaction.interact = false;
-    }
-    void UnfreezePlayer()
-    {
-        //p_Movement.frozen = false;
-        //p_Interaction.interact = true;
-        //p_Movement.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!entered)
-        {
-            if (collision.CompareTag("Player"))
-            {
-                started = true;
-                entered = true;
-                FreezePlayer();
-                dialoguePanel.SetActive(true);
-                StartCoroutine(ReadLine());
-            }
-        }
-    }
 }

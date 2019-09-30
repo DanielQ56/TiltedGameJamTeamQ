@@ -99,6 +99,31 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6694098404410004411, guid: 7ff1faac2e44756468ad87bc663f4a6b,
+        type: 3}
+      propertyPath: touchableLayers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694098404410004411, guid: 7ff1faac2e44756468ad87bc663f4a6b,
+        type: 3}
+      propertyPath: touchableLayers.Array.data[0].m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694098404410004411, guid: 7ff1faac2e44756468ad87bc663f4a6b,
+        type: 3}
+      propertyPath: touchableLayers.Array.data[1].m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694098404410004411, guid: 7ff1faac2e44756468ad87bc663f4a6b,
+        type: 3}
+      propertyPath: touchableLayers.Array.data[0]
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694098404410004411, guid: 7ff1faac2e44756468ad87bc663f4a6b,
+        type: 3}
+      propertyPath: touchableLayers.Array.data[1]
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ff1faac2e44756468ad87bc663f4a6b, type: 3}
 --- !u!1 &4326157092962914952 stripped

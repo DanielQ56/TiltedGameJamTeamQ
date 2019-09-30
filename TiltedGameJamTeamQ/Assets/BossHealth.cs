@@ -7,6 +7,7 @@ public class BossHealth : MonoBehaviour
     [SerializeField] int baseHealth = 5000;
 
     int currentHealth;
+    bool waitingForDialogue = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,22 +17,32 @@ public class BossHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
+        if (currentHealth <= 0 && !waitingForDialogue)
+        {
+            GameDetails.instance.nextBoss();
+            Destroy(this.gameObject);
+        }
     }
 
     public void DecreaseHealth()
     {
+        Debug.Log("taking damage");
         currentHealth -= 1;
         if(currentHealth == baseHealth / 2)
         {
             GameDetails.instance.ChangePhase();
         }
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !waitingForDialogue)
         {
-            GameDetails.instance.nextBoss();
-            Destroy(this.gameObject);
+            LevelDialogueManager.instance.StopAllActions();
+            LevelDialogueManager.instance.ActivateDialogueSequence();
+            waitingForDialogue = true;
         }
+    }
+
+    public void DoneWithDialogue()
+    {
+        waitingForDialogue = false;
     }
 
     

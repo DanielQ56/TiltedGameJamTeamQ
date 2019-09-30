@@ -5,6 +5,7 @@ using System;
 
 public class BulletMovement : MonoBehaviour
 {
+    [SerializeField] List<string> touchableLayers;
 
     Rigidbody2D rb;
 
@@ -13,6 +14,11 @@ public class BulletMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         this.transform.localScale = Vector3.one * 0.25f;
+    }
+
+    public void Setup(string layer)
+    {
+        this.gameObject.layer = LayerMask.NameToLayer(layer);
     }
 
     public void FireOff(Vector3 pos, float speed, string layer)
@@ -38,14 +44,19 @@ public class BulletMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(this.gameObject.layer != other.gameObject.layer)
+        if (touchableLayers.Contains(LayerMask.LayerToName(other.gameObject.layer)))
         {
-            try
+            if (this.gameObject.layer != other.gameObject.layer && !other.CompareTag("Bullet"))
             {
-                other.gameObject.GetComponent<BossHealth>().DecreaseHealth();
-            }
-            catch(NullReferenceException)
-            {
+                try
+                {
+                    Debug.Log(LayerMask.LayerToName(this.gameObject.layer) + " " + LayerMask.LayerToName(other.gameObject.layer));
+                    other.gameObject.GetComponent<BossHealth>().DecreaseHealth();
+                }
+                catch (NullReferenceException)
+                {
+                    other.gameObject.GetComponent<PlayerHealth>().TakeDamage();
+                }
             }
         }
     }

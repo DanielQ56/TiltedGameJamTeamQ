@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameDetails : MonoBehaviour
 {
-    public static GameDetails instance;
+    public static GameDetails instance = null;
 
     [SerializeField] int phase = 1;
     [SerializeField] int waifu = 1;
@@ -23,7 +23,9 @@ public class GameDetails : MonoBehaviour
             Destroy(this.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
 
     public int GetCurrentPhase()
     {
@@ -38,7 +40,6 @@ public class GameDetails : MonoBehaviour
 
     public void nextBoss()
     {
-        Debug.Log("Hey");
         phase += 1;
         waifu += 1;
         StartCoroutine(FadeIn());
@@ -48,19 +49,25 @@ public class GameDetails : MonoBehaviour
 
     IEnumerator FadeOut()
     {
+        LevelDialogueManager.instance.StopAllActions();
         Color change = FadeImage.color;
+        if(FadeImage.color.a < 1)
+        {
+            change.a = 1f;
+            FadeImage.color = change;
+            yield return null;
+        }
         while(FadeImage.color.a > 0)
         {
             change.a -= Time.deltaTime;
             FadeImage.color = change;
             yield return null;
         }
-        Player.canMove = true;
+        LevelDialogueManager.instance.ActivateDialogueSequence();
     }
 
     IEnumerator FadeIn()
     {
-        Player.canMove = false;
         Color change = FadeImage.color;
         while (FadeImage.color.a < 1)
         {
@@ -74,7 +81,9 @@ public class GameDetails : MonoBehaviour
 
     void OnSceneLoaded(Scene loadedScene, LoadSceneMode sceneMode)
     {
-        FadeOut();
+
+        Debug.Log("heyo");
+        StartCoroutine(FadeOut());
     }
 
 }

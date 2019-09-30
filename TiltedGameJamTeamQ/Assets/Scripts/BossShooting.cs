@@ -20,6 +20,7 @@ public class BossShooting : MonoBehaviour
 
     List<Attacks> listOfAttacks;
 
+    bool canShoot = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +43,19 @@ public class BossShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Shoot();
+        if(canShoot)
+            Shoot();
        
+    }
+
+    public void StopShooting()
+    {
+        canShoot = false;
+    }
+
+    public void AllowShooting()
+    {
+        canShoot = true;
     }
 
     void Shoot()
@@ -113,6 +125,8 @@ public class BossShooting : MonoBehaviour
             float rad = Mathf.Deg2Rad * angle;
             GameObject b = pool[i].GetUnusedObject();
             b.SetActive(true);
+            BulletMovement m = b.GetComponent<BulletMovement>();
+            m.Setup(pool[i].GetLayer());
             b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * radius;
             movement.Add(b.GetComponent<BulletMovement>());
             yield return new WaitForSeconds(spawnLag);
@@ -173,6 +187,8 @@ public class BossShooting : MonoBehaviour
                 float rad = Mathf.Deg2Rad * angle;
                 GameObject b = pool[i].GetUnusedObject();
                 b.SetActive(true);
+                BulletMovement m = b.GetComponent<BulletMovement>();
+                m.Setup(pool[i].GetLayer());
                 b.GetComponent<SpriteRenderer>().enabled = false;
                 b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * (radius);
                 movement.Add(b);
@@ -208,6 +224,8 @@ public class BossShooting : MonoBehaviour
             float rad = Mathf.Deg2Rad * angle;
             GameObject b = pool[i].GetUnusedObject();
             b.SetActive(true);
+            BulletMovement m = b.GetComponent<BulletMovement>();
+            m.Setup(pool[i].GetLayer());
             b.GetComponent<SpriteRenderer>().enabled = false;
             b.transform.localPosition = Vector3.Normalize(new Vector3(Mathf.Cos(rad), Mathf.Sin(rad))) * Random.Range(radius, radius + 0.1f);
             movement.Add(b);

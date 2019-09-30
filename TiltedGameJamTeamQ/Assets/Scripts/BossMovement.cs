@@ -13,6 +13,10 @@ public class BossMovement : MonoBehaviour
     bool moving = false;
 
     float waitTimer;
+
+    bool canMove = true;
+
+    Transform newDest;
     
     // Start is called before the first frame update
     void Start()
@@ -22,34 +26,37 @@ public class BossMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!waitingToMove)
+        if (canMove)
         {
-            waitTimer = Random.Range(minWaitTime, maxWaitTime);
-            waitingToMove = true;
+            if (!waitingToMove)
+            {
+                waitTimer = Random.Range(minWaitTime, maxWaitTime);
+                waitingToMove = true;
+            }
+            if (waitTimer <= 0)
+            {
+                if (!moving)
+                    ChooseNewDestination();
+            }
+            else
+                waitTimer -= Time.deltaTime;
         }
-        if (waitTimer <= 0)
-        {
-            if (!moving)
-                ChooseNewDestination();
-        }
-        else
-            waitTimer -= Time.deltaTime;
         
     }
 
 
 
-    IEnumerator MoveToNewPosition(Transform t)
+    IEnumerator MoveToNewPosition()
     {
         moving = true;
-        float maxDistance = Mathf.Abs(Vector3.Distance(this.transform.position, t.position));
-        while (Mathf.Abs(Vector3.Distance(this.transform.position, t.position)) > 0.5f)
+        float maxDistance = Mathf.Abs(Vector3.Distance(this.transform.position, newDest.position));
+        while (Mathf.Abs(Vector3.Distance(this.transform.position, newDest.position)) > 0.5f)
         {
-            float tthing = Mathf.Clamp(maxDistance - Mathf.Abs(Vector3.Distance(this.transform.position, t.position)) / maxDistance, 0.01f, 0.5f);
-            this.transform.position = Vector3.Lerp(this.transform.position, t.position, tthing * 0.5f);
+            float tthing = Mathf.Clamp(maxDistance - Mathf.Abs(Vector3.Distance(this.transform.position, newDest.position)) / maxDistance, 0.01f, 0.5f);
+            this.transform.position = Vector3.Lerp(this.transform.position, newDest.position, tthing * 0.5f);
             yield return null;
         }
-        this.transform.position = t.position;
+        this.transform.position = newDest.position;
         moving = false;
         waitingToMove = false;
         CameraScript.instance.Shake();
@@ -60,13 +67,24 @@ public class BossMovement : MonoBehaviour
         int phase = GameDetails.instance.GetCurrentPhase();
         if (phase > 1)
         {
-            Transform t = DestinationPoints[Random.Range(0, phase)];
-            while (t.position == this.transform.position)
+            newDest = DestinationPoints[Random.Range(0, phase)];
+            while (newDest.position == this.transform.position)
             {
-                t = DestinationPoints[Random.Range(0,phase)];
+                newDest = DestinationPoints[Random.Range(0,phase)];
             }
-            StartCoroutine(MoveToNewPosition(t));
+            StartCoroutine(MoveToNewPosition());
         }
         
+    }
+
+    public void StopMovement()
+    {
+        canMove = false;
+        StopCoroutine(MoveToNewPosition());
+    }
+
+    public void AllowMovement()
+    {
+        canMove = true;
     }
 }
