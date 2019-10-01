@@ -11,6 +11,7 @@ public class GameDetails : MonoBehaviour
     [SerializeField] int phase = 1;
     [SerializeField] int waifu = 1;
     [SerializeField] Image FadeImage;
+    [SerializeField] GameObject gameOver;
 
     private void Awake()
     {
@@ -42,7 +43,7 @@ public class GameDetails : MonoBehaviour
     {
         phase += 1;
         waifu += 1;
-        StartCoroutine(FadeIn());
+        StartCoroutine(FadeIn(false));
         
         
     }
@@ -66,8 +67,9 @@ public class GameDetails : MonoBehaviour
         LevelDialogueManager.instance.ActivateDialogueSequence();
     }
 
-    IEnumerator FadeIn()
+    IEnumerator FadeIn(bool ded)
     {
+        LevelDialogueManager.instance.StopAllActions();
         Color change = FadeImage.color;
         while (FadeImage.color.a < 1)
         {
@@ -75,15 +77,38 @@ public class GameDetails : MonoBehaviour
             FadeImage.color = change;
             yield return null;
         }
-        SceneManager.LoadScene("waifu" + waifu.ToString());
-
+        if (!ded)
+        {
+            SceneManager.LoadScene("waifu" + waifu.ToString());
+        }
+        else
+        {
+            Debug.Log("hi");
+            gameOver.SetActive(true);
+        }
     }
 
     void OnSceneLoaded(Scene loadedScene, LoadSceneMode sceneMode)
     {
 
-        Debug.Log("heyo");
         StartCoroutine(FadeOut());
+    }
+
+    public void GameOver()
+    {
+
+        StartCoroutine(FadeIn(true));
+    }
+
+    public void onRestart()
+    {
+        Debug.Log("heyo");
+        if (gameOver) 
+        {
+            gameOver.SetActive(false);
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
 }

@@ -13,7 +13,7 @@ public class BulletMovement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        this.transform.localScale = Vector3.one * 0.25f;
+        this.transform.localScale = Vector3.one * 0.18f;
     }
 
     public void Setup(string layer)
@@ -50,13 +50,13 @@ public class BulletMovement : MonoBehaviour
             {
                 try
                 {
-                    Debug.Log(LayerMask.LayerToName(this.gameObject.layer) + " " + LayerMask.LayerToName(other.gameObject.layer));
                     other.gameObject.GetComponent<BossHealth>().DecreaseHealth();
                 }
                 catch (NullReferenceException)
                 {
                     other.gameObject.GetComponent<PlayerHealth>().TakeDamage();
                 }
+                this.gameObject.SetActive(false);
             }
         }
     }

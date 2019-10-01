@@ -26,7 +26,6 @@ public class BossHealth : MonoBehaviour
 
     public void DecreaseHealth()
     {
-        Debug.Log("taking damage");
         currentHealth -= 1;
         if(currentHealth == baseHealth / 2)
         {

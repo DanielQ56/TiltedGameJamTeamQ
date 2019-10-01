@@ -49,14 +49,4 @@ public class ButtonController : MonoBehaviour
         SceneManager.LoadScene("TitleScreen");
     }
 
-    public void onRestart()
-    {
-        //Debug.Log(SceneManager.GetActiveScene().ToString());
-        if (gameOver) //gameOVer != null
-        {
-            gameOver.SetActive(false);
-            Time.timeScale = 1;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-    }
 }
