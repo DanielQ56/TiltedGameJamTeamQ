@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] GameObject mcSprite;
     [SerializeField] float timeBetweenSpriteFlash = 0.25f;
     [SerializeField] Image mcHealth;
+    [SerializeField] GameObject gameOver;
 
 
     int currentHealth;
@@ -62,6 +63,8 @@ public class PlayerHealth : MonoBehaviour
             if (currentHealth <= 0)
             {
                 Destroy(this.gameObject);
+                Time.timeScale = 0;
+                gameOver.SetActive(true);
             }
             else
             {
