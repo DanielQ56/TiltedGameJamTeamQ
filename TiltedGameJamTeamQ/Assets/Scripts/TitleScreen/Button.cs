@@ -25,7 +25,7 @@ public class Button : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        transform.localScale += new Vector3(.1f, .1f, .1f);
+        transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
     }
     private void OnMouseExit()
     {
