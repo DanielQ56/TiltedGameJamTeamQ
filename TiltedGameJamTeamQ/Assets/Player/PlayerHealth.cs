@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] float timeBetweenSpriteFlash = 0.25f;
     [SerializeField] Image mcHealth;
 
+    [SerializeField] GameObject deathFx;
+
     int currentHealth;
 
     bool invulnerable = false;
@@ -61,6 +63,7 @@ public class PlayerHealth : MonoBehaviour
             if (currentHealth <= 0)
             {
                 Destroy(this.gameObject);
+                Instantiate(deathFx, this.transform.position, Quaternion.identity);
                 GameDetails.instance.GameOver();
             }
             else

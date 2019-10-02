@@ -708,7 +708,7 @@ MonoBehaviour:
   mcSprite: {fileID: 208466377574441200}
   timeBetweenSpriteFlash: 0.25
   mcHealth: {fileID: 0}
-  gameOver: {fileID: 0}
+  deathFx: {fileID: 6003369425156534168, guid: 340b194be41eb8846a357620663ded65, type: 3}
 --- !u!114 &8216505149600522449
 MonoBehaviour:
   m_ObjectHideFlags: 0

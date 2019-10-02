@@ -9,7 +9,7 @@ public class ButtonController : MonoBehaviour
     [SerializeField] protected AudioClip clicksFx;
     [SerializeField] protected AudioSource sFxSource;
 
-    [SerializeField] GameObject gameOver;
+    
     // Start is called before the first frame update
     private void Awake()
     {
@@ -33,20 +33,24 @@ public class ButtonController : MonoBehaviour
     public void onQuit()
     {
         Application.Quit();
+        clickedsFx();
     }
 
     public void onPlay()
     {
         SceneManager.LoadScene("waifu1");
+        clickedsFx();
     }
 
     public void onCredits()
     {
         SceneManager.LoadScene("CreditScene");
+        clickedsFx();
     }
     public void onCreditBack()
     {
         SceneManager.LoadScene("TitleScreen");
+        clickedsFx();
     }
 
 }
