@@ -7,6 +7,8 @@ public class BulletMovement : MonoBehaviour
 {
     [SerializeField] List<string> touchableLayers;
 
+
+
     Rigidbody2D rb;
 
     // Start is called before the first frame update

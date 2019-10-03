@@ -7,6 +7,7 @@ public class ObjectPool : MonoBehaviour
     [SerializeField] ScriptableBullet objectToPool;
     [SerializeField] int poolMax;
     [SerializeField] bool shouldExpand = false;
+    [SerializeField] AudioSource source;
 
     Vector3 originalRotation;
 
@@ -77,5 +78,10 @@ public class ObjectPool : MonoBehaviour
     public string GetLayer()
     {
         return objectToPool.layer;
+    }
+
+    public void PlayClip()
+    {
+        source.Play();
     }
 }

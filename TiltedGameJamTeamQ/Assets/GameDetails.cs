@@ -12,19 +12,22 @@ public class GameDetails : MonoBehaviour
     [SerializeField] int waifu = 1;
     [SerializeField] Image FadeImage;
     [SerializeField] GameObject gameOver;
+    [SerializeField] AudioSource source;
+    int startingPhase;
+
 
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(this.gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
-        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
 
@@ -90,7 +93,7 @@ public class GameDetails : MonoBehaviour
 
     void OnSceneLoaded(Scene loadedScene, LoadSceneMode sceneMode)
     {
-
+        startingPhase = phase;
         StartCoroutine(FadeOut());
     }
 
@@ -102,11 +105,17 @@ public class GameDetails : MonoBehaviour
 
     public void onRestart()
     {
-        Debug.Log("heyo");
-        if (gameOver) 
+        StartCoroutine(Restart());
+    }
+
+    IEnumerator Restart()
+    {
+        Time.timeScale = 1;
+        yield return new WaitForSeconds(source.clip.length);
+        if (gameOver)
         {
             gameOver.SetActive(false);
-            Time.timeScale = 1;
+            phase = startingPhase;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

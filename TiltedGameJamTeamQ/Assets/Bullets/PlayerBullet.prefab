@@ -124,7 +124,8 @@ PrefabInstance:
       propertyPath: touchableLayers.Array.data[1]
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 7ff1faac2e44756468ad87bc663f4a6b, type: 3}
 --- !u!1 &4326157092962914952 stripped
 GameObject:

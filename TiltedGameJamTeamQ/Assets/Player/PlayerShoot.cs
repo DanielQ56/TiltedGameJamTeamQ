@@ -6,6 +6,7 @@ public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] List<ObjectPool> pools;
     [SerializeField] PlayerMovement pMove;
+    [SerializeField] AudioSource source;
 
     bool isShooting = false;
 
