@@ -119,6 +119,7 @@ public class GameDetails : MonoBehaviour
         if (gameOver)
         {
             gameOver.SetActive(false);
+            youWon.SetActive(false);
             phase = startingPhase;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
