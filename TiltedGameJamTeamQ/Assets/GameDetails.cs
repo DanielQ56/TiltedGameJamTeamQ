@@ -12,6 +12,7 @@ public class GameDetails : MonoBehaviour
     [SerializeField] int waifu = 1;
     [SerializeField] Image FadeImage;
     [SerializeField] GameObject gameOver;
+    [SerializeField] GameObject youWon;
     [SerializeField] AudioSource source;
     int startingPhase;
 
@@ -80,13 +81,16 @@ public class GameDetails : MonoBehaviour
             FadeImage.color = change;
             yield return null;
         }
-        if (!ded)
+        if (!ded && waifu != 4)
         {
             SceneManager.LoadScene("waifu" + waifu.ToString());
         }
+        else if (!ded && waifu == 4)
+        {
+            youWon.SetActive(true);
+        }
         else
         {
-            Debug.Log("hi");
             gameOver.SetActive(true);
         }
     }
