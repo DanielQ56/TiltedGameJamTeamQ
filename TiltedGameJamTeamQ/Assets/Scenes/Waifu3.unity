@@ -339,7 +339,18 @@ MonoBehaviour:
   dialoguePanel: {fileID: 262817849}
   dialogueText: {fileID: 441398811}
   levelDialogue:
-  - At the beginning
+  - 'MC-Kun: "Uuugh! Why does this always happen! At least now I can finally go home
+    and--"'
+  - 'Bomb-Chan: "Ohohoho, is that my MC-kun coming from a mal*mart?"'
+  - 'MC-kun: "Oh, h-hey Bomb-chan. Look, sorry I''m in a rush so--"'
+  - 'Bomb-Chan: "Ohohoho! No need to get all flustered around me, the girl with the
+    biggest chest'
+  - 'Bomb-Chan: ...of school supplies of course! Hehe~!" '
+  - 'MC-Kun: What the... when she talks, I get all warm and everything else seems
+    irrelevant... I must be...'
+  - 'MC-kun: CURSED BY HER! She''s a witch, there''s no way any other human would
+    have a bigger chest of school supplies than me!'
+  - 'MC-Kun: Avoid all distractions!! This is war!'
   done:
     m_PersistentCalls:
       m_Calls: []
@@ -3659,7 +3670,13 @@ MonoBehaviour:
   dialoguePanel: {fileID: 262817849}
   dialogueText: {fileID: 441398811}
   levelDialogue:
-  - Yay i won
+  - 'MC-Kun: "Not today, Bomb-chan! Your spells won''t work on me! I''m going H-O-M-E!"'
+  - 'Bomb-Chan: *sniff* H-How could I be rejected by a nerd like him?'
+  - 'Bomb-Chan: Doesn''t he know I... *sniff* become bomb, just for him to notice
+    me...? '
+  - 'Bomb-Chan: ..."Good-bye... MC-kun..."'
+  - 'MC-Kun: "I''m free! I can finally go home and study..."'
+  - 'MC-Kun: "Maybe I should start wearing a mask on my way home..."'
   done:
     m_PersistentCalls:
       m_Calls: []

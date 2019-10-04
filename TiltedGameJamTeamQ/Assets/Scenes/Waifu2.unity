@@ -2674,7 +2674,11 @@ MonoBehaviour:
   dialoguePanel: {fileID: 262817849}
   dialogueText: {fileID: 441398811}
   levelDialogue:
-  - Yay i won
+  - 'MC-kun: "Yes we do, no i haven''t seen you in my life, yes my day was good, here
+    is the exact change goodbye!!!"'
+  - 'Mal-chan: "O-Oh..."'
+  - 'Mal-chan: "..."'
+  - 'Mal-chan: "Come back again soon, senpai..."'
   done:
     m_PersistentCalls:
       m_Calls: []
@@ -3241,7 +3245,16 @@ MonoBehaviour:
   dialoguePanel: {fileID: 262817849}
   dialogueText: {fileID: 441398811}
   levelDialogue:
-  - At the beginning
+  - 'MC-kun: "Finally found the printer ink... just need to swiftly buy this and I
+    can go home and study"'
+  - 'Mal-chan: *yawn* "...hello... how may I--"'
+  - 'Mal-chan: "..."'
+  - 'Mal-chan: *blushes*'
+  - 'MC-kun: "H-huh?"'
+  - 'Mal-chan: "Y-You look familiar..."'
+  - 'MC-Kun: Oh no... don''t tell me... not this... anything but this...'
+  - 'Mal-chan: "D-Do you go to H highschool by chance? Because my name is..."'
+  - 'MC-kun: "Awkward SMALL TALK! My number one weakness! AVOID! AVOID!!"'
   done:
     m_PersistentCalls:
       m_Calls: []

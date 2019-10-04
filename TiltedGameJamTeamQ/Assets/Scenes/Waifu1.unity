@@ -2906,7 +2906,12 @@ MonoBehaviour:
   dialoguePanel: {fileID: 262817849}
   dialogueText: {fileID: 441398811}
   levelDialogue:
-  - Yay i won
+  - 'Scooter-chan: "Aw, he didn''t notice me after all..."'
+  - 'Scooter-chan: "Which makes him totally ten times hotter!! Kyaa~ I got ignored
+    by senpai~"'
+  - 'MC-kun: "Looks like she finally gave up. Now time to start my--"'
+  - 'MC-kun: "CRAP! I forgot to pick up printer ink! How will I annotate my notes?"'
+  - 'MC-kun: *Sigh* "Off to the closest convenient store I guess..."'
   done:
     m_PersistentCalls:
       m_Calls: []
@@ -3622,7 +3627,16 @@ MonoBehaviour:
   dialoguePanel: {fileID: 262817849}
   dialogueText: {fileID: 441398811}
   levelDialogue:
-  - At the beginning
+  - 'MC-kun: "I gotta get home... so much homework to do..."'
+  - 'Scooter-chan: "MC-KUUUUUUN~"'
+  - 'MC-kun: "Crap it''s an underclassman again! They''ve been doing this a lot...
+    do they really want my notes that bad?"'
+  - 'MC-kun: "maybe if I look busy and walk faster, she won''t bother me..."'
+  - 'Scooter-chan: "Oh~ that busy look in his eye, it''s SO attractive! MC-KUUUUN~
+    YOU''RE SO DETERMINED KYAA~?"'
+  - 'MC-kun: "Oh my god... she''s so fast... no way I can outrun her scooter!"'
+  - 'MC-kun: "Maybe if I keep shooting her disinterested glances, and avoid her shots
+    of adoring eye-contact, I can get home without interacting with her!"'
   done:
     m_PersistentCalls:
       m_Calls: []
