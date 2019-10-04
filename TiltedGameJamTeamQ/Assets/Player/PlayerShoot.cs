@@ -7,10 +7,16 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] List<ObjectPool> pools;
     [SerializeField] PlayerMovement pMove;
     [SerializeField] AudioSource source;
+    SpriteRenderer sp;
 
     bool isShooting = false;
 
     bool canShoot = true;
+
+    void Start()
+    {
+        sp = this.GetComponent<SpriteRenderer>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -35,6 +41,7 @@ public class PlayerShoot : MonoBehaviour
     void Focus()
     {
         pMove.Focus();
+        sp.enabled = true;
         foreach (ObjectPool p in pools)
         {
             p.Straighten();
@@ -48,6 +55,7 @@ public class PlayerShoot : MonoBehaviour
         {
             p.Revert();
         }
+        sp.enabled = false;
     }
 
     void Shoot()

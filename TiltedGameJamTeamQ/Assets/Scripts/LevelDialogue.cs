@@ -38,7 +38,7 @@ public class LevelDialogue : MonoBehaviour
         }
         if (waitingToContinue)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {
                 if (!doneWithDialogue)
                 {
