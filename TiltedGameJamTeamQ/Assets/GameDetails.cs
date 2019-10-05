@@ -47,6 +47,8 @@ public class GameDetails : MonoBehaviour
     {
         phase += 1;
         waifu += 1;
+        Debug.Log(waifu);
+        Debug.Log("Going next");
         StartCoroutine(FadeIn(false));
         
         
@@ -75,6 +77,7 @@ public class GameDetails : MonoBehaviour
     {
         LevelDialogueManager.instance.StopAllActions();
         Color change = FadeImage.color;
+        youWon.SetActive(false);
         while (FadeImage.color.a < 1)
         {
             change.a += Time.deltaTime;
@@ -103,13 +106,20 @@ public class GameDetails : MonoBehaviour
 
     public void GameOver()
     {
-
         StartCoroutine(FadeIn(true));
     }
 
     public void onRestart()
     {
         StartCoroutine(Restart());
+    }
+
+    public void FullReset()
+    {
+        startingPhase = 1;
+        phase = 1;
+        waifu = 1;
+        StartCoroutine(FadeIn(false));
     }
 
     IEnumerator Restart()

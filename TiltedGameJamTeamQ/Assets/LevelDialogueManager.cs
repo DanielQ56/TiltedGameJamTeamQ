@@ -33,11 +33,15 @@ public class LevelDialogueManager : MonoBehaviour
 
     public void StopAllActions()
     {
-        pMove.StopMovement();
-        bMove.StopMovement();
-        bShoot.StopShooting();
-        pShoot.StopShooting();
-        pHealth.EndInvulnerability();
+        try
+        {
+            pMove.StopMovement();
+            bMove.StopMovement();
+            bShoot.StopShooting();
+            pShoot.StopShooting();
+            pHealth.EndInvulnerability();
+        }
+        catch (MissingReferenceException) { Debug.Log("OMEGALUL"); }
     }
 
     void AllowActions()
