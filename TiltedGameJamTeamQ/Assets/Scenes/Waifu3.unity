@@ -2870,15 +2870,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6360428644525559653, guid: dfec47df8fb06b440a0058428b5f6002,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.00048828125
-      objectReference: {fileID: 0}
     - target: {fileID: 6360428644525559650, guid: dfec47df8fb06b440a0058428b5f6002,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360428644525559653, guid: dfec47df8fb06b440a0058428b5f6002,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00048828125
       objectReference: {fileID: 0}
     - target: {fileID: 6360428645682374254, guid: dfec47df8fb06b440a0058428b5f6002,
         type: 3}
@@ -5452,7 +5452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656209a5eb761e647854100033914fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 1
+  baseHealth: 1000
   healthBar: {fileID: 988092673}
   health: {fileID: 660434555}
 --- !u!114 &1672474775
