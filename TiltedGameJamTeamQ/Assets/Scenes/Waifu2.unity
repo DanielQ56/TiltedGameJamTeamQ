@@ -227,7 +227,7 @@ PrefabInstance:
         type: 3}
       propertyPath: mcHealth
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 378306012}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbd256a1be6587f42ab2c62249ff734b, type: 3}
 --- !u!114 &77917603 stripped
