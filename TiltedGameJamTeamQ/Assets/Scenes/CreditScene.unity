@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -622,11 +622,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 687924498}
     m_Modifications:
-    - target: {fileID: 686677540509432186, guid: baa0490a1341e18429e68219b7874e66,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonController
-      objectReference: {fileID: 0}
     - target: {fileID: 686677540509432187, guid: baa0490a1341e18429e68219b7874e66,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -681,6 +676,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 686677540509432186, guid: baa0490a1341e18429e68219b7874e66,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baa0490a1341e18429e68219b7874e66, type: 3}
@@ -738,8 +738,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 7.4210005}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 104, y: 4}
-  m_SizeDelta: {x: 162.4, y: 46.23}
+  m_AnchoredPosition: {x: 165, y: 4}
+  m_SizeDelta: {x: 282.1, y: 80.3}
   m_Pivot: {x: 0, y: 0}
 --- !u!95 &1572972515
 Animator:
