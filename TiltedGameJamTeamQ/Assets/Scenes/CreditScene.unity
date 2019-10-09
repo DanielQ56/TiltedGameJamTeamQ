@@ -622,6 +622,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 687924498}
     m_Modifications:
+    - target: {fileID: 686677540509432186, guid: baa0490a1341e18429e68219b7874e66,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonController
+      objectReference: {fileID: 0}
     - target: {fileID: 686677540509432187, guid: baa0490a1341e18429e68219b7874e66,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -676,11 +681,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 686677540509432186, guid: baa0490a1341e18429e68219b7874e66,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonController
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baa0490a1341e18429e68219b7874e66, type: 3}
@@ -804,7 +804,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1248622381}
-        m_MethodName: onCreditBack
+        m_MethodName: onReturnToTitle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

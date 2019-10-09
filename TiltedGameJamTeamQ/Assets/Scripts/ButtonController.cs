@@ -47,7 +47,7 @@ public class ButtonController : MonoBehaviour
         SceneManager.LoadScene("CreditScene");
         clickedsFx();
     }
-    public void onCreditBack()
+    public void onReturnToTitle()
     {
         SceneManager.LoadScene("TitleScreen");
         clickedsFx();
