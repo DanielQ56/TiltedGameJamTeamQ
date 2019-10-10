@@ -10,7 +10,8 @@ public class GameDetails : MonoBehaviour
 
     [SerializeField] int phase = 1;
     [SerializeField] int waifu = 1;
-    [SerializeField] Image FadeImage;
+    [SerializeField] Image stageFade;
+    [SerializeField] Image menuFade;
     [SerializeField] GameObject gameOver;
     [SerializeField] GameObject youWon;
     [SerializeField] AudioSource source;
@@ -20,6 +21,8 @@ public class GameDetails : MonoBehaviour
 
     PauseMenu p;
 
+    Image FadeImage;
+
     private void Awake()
     {
         if (instance == null)
@@ -27,6 +30,7 @@ public class GameDetails : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this.gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
+            FadeImage = stageFade;
         }
         else
         {
@@ -62,8 +66,10 @@ public class GameDetails : MonoBehaviour
 
     IEnumerator FadeOut()
     {
-        if(!onMenu)
+        if (!onMenu)
+        {
             LevelDialogueManager.instance.StopAllActions();
+        }
         Color change = FadeImage.color;
         if(FadeImage.color.a < 1)
         {
@@ -77,13 +83,17 @@ public class GameDetails : MonoBehaviour
             FadeImage.color = change;
             yield return null;
         }
-        if(!onMenu)
+        if (!onMenu)
+        {
             LevelDialogueManager.instance.ActivateDialogueSequence();
+            FadeImage = stageFade;
+        }
     }
 
     IEnumerator FadeIn(bool ded)
     {
-        LevelDialogueManager.instance.StopAllActions();
+        if(!onMenu)
+            LevelDialogueManager.instance.StopAllActions();
         Color change = FadeImage.color;
         youWon.SetActive(false);
         while (FadeImage.color.a < 1)
@@ -125,13 +135,15 @@ public class GameDetails : MonoBehaviour
             onMenu = false;
             startingPhase = phase;
             StartCoroutine(FadeOut());
+            
         }
     }
 
     public void HeadingToMainMenu()
     {
         gameOver.SetActive(false);
-        youWon.SetActive(false);
+        FadeImage = menuFade;
+        Debug.Log("hey");
         onMenu = true;
         StartCoroutine(FadeIn(false));
     }

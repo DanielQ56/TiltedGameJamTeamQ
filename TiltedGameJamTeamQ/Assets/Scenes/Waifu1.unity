@@ -5081,6 +5081,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: onUnpause
       objectReference: {fileID: 0}
+    - target: {fileID: 6360428644647360468, guid: dfec47df8fb06b440a0058428b5f6002,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360428645682374254, guid: dfec47df8fb06b440a0058428b5f6002,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360428644525559652, guid: dfec47df8fb06b440a0058428b5f6002,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399456719563252672, guid: dfec47df8fb06b440a0058428b5f6002,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfec47df8fb06b440a0058428b5f6002, type: 3}
 --- !u!224 &6360428645434062002 stripped
