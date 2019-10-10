@@ -49,7 +49,7 @@ public class ButtonController : MonoBehaviour
     }
     public void onReturnToTitle()
     {
-        SceneManager.LoadScene("TitleScreen");
+        GameDetails.instance.HeadingToMainMenu();
         clickedsFx();
     }
 

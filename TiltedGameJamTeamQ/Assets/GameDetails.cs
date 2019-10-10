@@ -16,6 +16,9 @@ public class GameDetails : MonoBehaviour
     [SerializeField] AudioSource source;
     int startingPhase;
 
+    bool onMenu = false;
+
+    PauseMenu p;
 
     private void Awake()
     {
@@ -29,6 +32,11 @@ public class GameDetails : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void Start()
+    {
+        p = GetComponent<PauseMenu>();
     }
 
 
@@ -47,8 +55,6 @@ public class GameDetails : MonoBehaviour
     {
         phase += 1;
         waifu += 1;
-        Debug.Log(waifu);
-        Debug.Log("Going next");
         StartCoroutine(FadeIn(false));
         
         
@@ -56,7 +62,8 @@ public class GameDetails : MonoBehaviour
 
     IEnumerator FadeOut()
     {
-        LevelDialogueManager.instance.StopAllActions();
+        if(!onMenu)
+            LevelDialogueManager.instance.StopAllActions();
         Color change = FadeImage.color;
         if(FadeImage.color.a < 1)
         {
@@ -70,7 +77,8 @@ public class GameDetails : MonoBehaviour
             FadeImage.color = change;
             yield return null;
         }
-        LevelDialogueManager.instance.ActivateDialogueSequence();
+        if(!onMenu)
+            LevelDialogueManager.instance.ActivateDialogueSequence();
     }
 
     IEnumerator FadeIn(bool ded)
@@ -84,7 +92,12 @@ public class GameDetails : MonoBehaviour
             FadeImage.color = change;
             yield return null;
         }
-        if (!ded && waifu != 4)
+        if (onMenu)
+        {
+            SceneManager.LoadScene("TitleScreen");
+            Debug.Log("Going to menu");
+        }
+        else if (!ded && waifu != 4)
         {
             SceneManager.LoadScene("waifu" + waifu.ToString());
         }
@@ -100,8 +113,27 @@ public class GameDetails : MonoBehaviour
 
     void OnSceneLoaded(Scene loadedScene, LoadSceneMode sceneMode)
     {
-        startingPhase = phase;
-        StartCoroutine(FadeOut());
+        if (loadedScene == SceneManager.GetSceneByName("TitleScreen"))
+        {
+            startingPhase = 1;
+            phase = 1;
+            waifu = 1;
+            StartCoroutine(FadeOut());
+        }
+        else
+        {
+            onMenu = false;
+            startingPhase = phase;
+            StartCoroutine(FadeOut());
+        }
+    }
+
+    public void HeadingToMainMenu()
+    {
+        gameOver.SetActive(false);
+        youWon.SetActive(false);
+        onMenu = true;
+        StartCoroutine(FadeIn(false));
     }
 
     public void GameOver()
